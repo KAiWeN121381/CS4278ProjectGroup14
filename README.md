@@ -14,3 +14,11 @@ Express.js - Web framework
 React - Front-end Framework
 
 Node.js - Web server
+
+
+# Git Policy
+- Only one feature for one commit
+- Keep commits small
+- Don’t commit broken code
+- Always include a meaningful commit message
+- One branch for each feature
