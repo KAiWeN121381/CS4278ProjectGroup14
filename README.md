@@ -5,15 +5,11 @@ We are trying to build a web-based P2P application to fulfill the sublet needs o
 # Framework
 We’ll use the MERN tech stack which incorporates front end, back end, and database handling. MERN provides support for the technical needs of our web app, which includes database, web framework, front-end framework and web server. The most amazing feature of MERN is that the three-tier architecture uses only Javascript and JSON for communication. Therefore, the construction of a workflow between tiers would be easier in theory. What’s more, there are a lot of resources and community support for using MERN as our tech stack, which makes the learning process easier. 
 
-
-
-MongoDB - Database
-
-Express.js - Web framework
-
-React - Front-end Framework
-
-Node.js - Web server
+  
+- MongoDB - Database
+- Express.js - Web framework
+- React - Front-end Framework
+- Node.js - Web server
 
 
 # Git Policy
