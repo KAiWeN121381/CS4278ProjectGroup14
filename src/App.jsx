@@ -1,13 +1,25 @@
-import MapComponent from "./components/MapComponent";
-import PostGroup from "./components/PostGroup";
-import InlineShareButtons from "./components/ShareButtons";
+import { BrowserRouter, Routes, Route} from 'react-router-dom'
+
+import Home from "./pages/Home";
+import CreatePost from "./pages/createpost";
+import NoPage from './pages/NoPage';
+import NavBar from './components/NavBar';
+import "./components/styles.css"
 
 function App() {
-  return <div>
-    <PostGroup />
-    <MapComponent></MapComponent>
-    <InlineShareButtons></InlineShareButtons>
-  </div>;
+  return (
+    <div>
+      <NavBar />
+      <BrowserRouter>
+        <Routes>
+          <Route index element={<Home/>} />
+          <Route path='/home' element={<Home />} />
+          <Route path='/createpost' element={<CreatePost />} />
+          <Route path='*' element={<NoPage />} />
+        </Routes>
+      </BrowserRouter>
+    </div>
+  )
 }
 
 export default App;
