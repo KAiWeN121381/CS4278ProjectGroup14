@@ -1,11 +1,9 @@
-import ListGroup from "./components/ListGroup";
-import Post from "./components/Post";
 import MapComponent from "./components/MapComponent";
+import PostGroup from "./components/PostGroup"
 
 function App() {
   return <div>
-    <ListGroup></ListGroup>
-    <Post></Post>
+    <PostGroup />
     <MapComponent></MapComponent>
   </div>;
 }
