@@ -3,10 +3,10 @@ import Post from "./Post";
 
 export default function PostGroup() {
     let posts = [
-        <Post />,
-        <Post />,
-        <Post />,
-        <Post />
+        <Post title="Title 1" text="text 1"/>,
+        <Post title="Title 2" text="text 2"/>,
+        <Post title="Title 3" text="text 3"/>,
+        <Post title="Title 4" text="text 4"/>
     ];
 
     const [selectedIndex, setSelectedIndex] = useState(-1);
@@ -22,7 +22,7 @@ export default function PostGroup() {
                             ? "list-group-item active"
                             : "list-group-item"
                         } 
-                    key={post} // change to key={post.id} later when implemented
+                    key={index} // change to key={post.id} later when implemented
                     onClick={() => {setSelectedIndex(index);}}
                 >
                     {post}

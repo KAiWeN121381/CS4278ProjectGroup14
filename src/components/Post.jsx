@@ -1,14 +1,14 @@
-export default function Post() {
+export default function Post(props) {
     return (
         <div className="rectangle">
-            <h1>Title of Post</h1>
+            <h1>{props.title}</h1>
             <img 
                 src="https://legacy.reactjs.org/logo-og.png" 
                 alt="Temp photo" 
                 height={100}
                 weight={100}
                 />
-            <p>This is the body text</p>
+            <p>{props.text}</p>
         </div>
     )
 }
