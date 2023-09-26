@@ -14,11 +14,12 @@
     "@emotion/styled": "^11.11.0",
     "@mui/material": "^5.14.11",
     "@react-google-maps/api": "^2.19.2",
-    "@react-google-maps/api": "^2.19.2",
     "bootstrap": "^5.2.3",
+    "mui": "^0.0.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-grid-layout": "^1.4.2"
+    "react-grid-layout": "^1.4.2",
+    "sharethis-reactjs": "^1.6.0"
   },
   "devDependencies": {
     "@types/react": "^18.2.15",
