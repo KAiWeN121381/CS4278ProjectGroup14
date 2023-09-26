@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route} from 'react-router-dom'
+import { Routes, Route} from 'react-router-dom'
 
 import Home from "./pages/Home";
 import CreatePost from "./pages/createpost";
@@ -10,14 +10,14 @@ function App() {
   return (
     <div>
       <NavBar />
-      <BrowserRouter>
+      <div className='container'>
         <Routes>
           <Route index element={<Home/>} />
           <Route path='/home' element={<Home />} />
           <Route path='/createpost' element={<CreatePost />} />
           <Route path='*' element={<NoPage />} />
         </Routes>
-      </BrowserRouter>
+      </div>
     </div>
   )
 }

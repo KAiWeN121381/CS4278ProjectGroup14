@@ -1,12 +1,26 @@
+import { Link } from "react-router-dom"
+
 export default function NavBar () {
     return (
         <nav className="nav">
-            <a href='/' className="site-title">VandyLet</a>
+            <Link to='/' className="site-title">VandyLet</Link>
             <ul>
-                <li> <a href='/home'>Home</a> </li>
-                <li> <a href='/createpost'>Create Post</a> </li> 
-                <li> <a href='/someotherpage'>Some other page</a> </li>
+                <CustomLink to='/home'>Home</CustomLink> 
+                <CustomLink to='/createpost'>Create Post</CustomLink>
+                <CustomLink to='/someotherpage'>Some other page</CustomLink>
             </ul>
         </nav>
+    )
+}
+
+function CustomLink ({to, children, ...props}) {
+    const path = window.location.pathname
+
+    return (
+        <li className={path === to ? "active" : ""}>
+            <Link to={to} {...props}>
+                {children}
+            </Link>
+        </li>
     )
 }
