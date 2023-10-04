@@ -7,8 +7,8 @@ body {
 }
 
 .nav {
-    background-color: #333;
-    color: white;
+    background-color: gold;
+    color: #333;
     display: flex;
     justify-content: space-between;
     align-items: stretch;
@@ -18,6 +18,7 @@ body {
 
 .site-title {
     font-size: 2rem;
+    padding-left: 1rem;
 }
 
 .nav a {
@@ -36,10 +37,18 @@ body {
     gap: 1rem;
 }
 
-.nav li.active {
-    background-color: #555;
+.nav li.hover {
+    background-color: rgb(197, 168, 4);
 }
 
-.nav li.hover {
-    background-color: #777;
+.input-bar {
+    text-align: left;
+    padding: 0 10px;
+    border-radius: 12px;
+    border-style: hidden;
+    display: inline;
+}
+
+::placeholder {
+    color: rgb(189, 189, 189);
 }
