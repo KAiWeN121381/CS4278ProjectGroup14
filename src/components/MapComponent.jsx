@@ -4,8 +4,8 @@ import { GoogleMap, LoadScript } from '@react-google-maps/api';
 class MapComponent extends Component {
   render() {
     const mapContainerStyle = {
-      width: '50%',
-      height: '400px',
+      width: '90%',
+      height: '150%',
     };
 
     const center = {
@@ -20,7 +20,7 @@ class MapComponent extends Component {
           center={center}
           zoom={15}
         >
-          {/* Add any additional components or markers here */}
+          {'Google map so to see the location.'}
         </GoogleMap>
       </LoadScript>
     );

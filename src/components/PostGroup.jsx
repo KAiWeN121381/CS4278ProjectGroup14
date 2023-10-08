@@ -1,8 +1,6 @@
 import { useState } from "react";
 import Post from "./Post";
 import * as React from 'react';;
-import Box from '@mui/material/Box';
-import Grid from '@mui/material/Grid';
 
 export default function PostGroup() {
     let posts = [
@@ -11,20 +9,24 @@ export default function PostGroup() {
         <Post title="Title 3" text="text 3"/>,
         <Post title="Title 4" text="text 4"/>,
         <Post title="Title 5" text="text 5"/>,
-        <Post title="Title 6" text="text 6"/>
+        <Post title="Title 6" text="text 6"/>,
+        <Post title="Title 7" text="text 7"/>,
+        <Post title="Title 8" text="text 8"/>,
+        <Post title="Title 9" text="text 9"/>,
+        <Post title="Title 10" text="text 10"/>,
+        <Post title="Title 11" text="text 11"/>,
+        <Post title="Title 12" text="text 12"/>
     ];
 
     const [selectedIndex, setSelectedIndex] = useState(-1);
 
     return ( 
-    <Box sx={{flexGrow: 1}}>
+    <div className="grid-container">
         {posts.length === 0 && <h1>No posts are found</h1>}
-        <Grid container spacing={0.5}>
-            {posts.map((post, index) => (
-                <Grid item xs={4} key={index}>
-                    {post}
-                </Grid>
-            ))}
-        </Grid>
-    </Box>)
+        {posts.map((post, index) => (
+            <div className="grid-item">
+                {post}
+            </div>
+        ))}
+    </div>)
 }

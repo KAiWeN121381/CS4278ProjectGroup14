@@ -19,6 +19,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-grid-layout": "^1.4.2",
+    "react-icons": "^4.11.0",
     "react-router-dom": "^6.16.0",
     "sharethis-reactjs": "^1.6.0"
   },
