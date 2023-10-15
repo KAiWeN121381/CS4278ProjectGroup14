@@ -8,10 +8,10 @@ export default function Home() {
     return (
     <div>
         <div className="left_right_separator">
-            <div className="left">
+            <div className="home-left">
                 <MapComponent></MapComponent>
             </div>
-            <div className="right">
+            <div className="home-right">
                 <div className="search-area">
                     <LocationSelection/>
                     <SearchBar />
