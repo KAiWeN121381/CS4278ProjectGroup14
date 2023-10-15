@@ -5,6 +5,7 @@ import {Post} from "./Post";
 
 export default function PostGroup() {
     let posts = [
+        // Access database here
         Post("Title 1"),
         Post("Title 2"),
         Post("Title 3"),

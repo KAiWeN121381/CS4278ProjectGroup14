@@ -68,6 +68,55 @@ body {
 }
 .post-right {
     flex: 1; 
+    padding-right: 5rem;
+}
+
+.post-image {
+    height: 80%;
+    width: 80%;
+}
+
+.post-image img{
+    border-radius: 1.5rem;
+    width: 100%;
+    height: 100%;
+}
+
+.post-details {
+    display: flex;
+    flex-direction: column;
+    border: 3px solid black;
+    border-radius: 20px;
+    min-height: 40rem;
+    align-items: stretch;
+    justify-content: space-around;
+}
+
+.post-details-text {
+    padding: 1.5rem 1.5rem;
+    width: inherit;
+}
+
+.post-details-wrapper {
+    display: flex;
+    padding: 1.5rem 1.5rem;
+    width: inherit;
+    align-items: center;
+    justify-content: center;
+}
+
+.post-detail-inline {
+    display: flex;
+    align-items: stretch;
+    justify-content: space-between;
+    padding-right: 1rem;
+}
+
+.request-sublet-button {
+    border-radius: 6px;
+    background-color: #ffa60d;
+    width: 10rem;
+    height: 4rem;
 }
 
 .input-bar {
@@ -107,12 +156,12 @@ body {
     gap: 1rem;
 }
 
-.post {
+.post-preview {
     height: 100%;
     width: 100%;
 }
 
-.post img{
+.post-preview img{
     border-radius: 1.5rem;
     width: 100%;
     height: 100%;
@@ -128,4 +177,59 @@ body {
 
 ::placeholder {
     color: rgb(189, 189, 189);
+}
+
+.filter-button {
+    background-color: transparent;
+    border-color: transparent;
+}
+
+.filter-button :hover{
+    background-color: rgb(220, 220, 220);
+}
+
+.filter-button :active{
+    background-color: rgb(203, 203, 203);
+}
+
+.filter {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 3;
+}
+
+.filter-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 20px;
+    border-radius: 2rem;
+    border-color: black;
+    border: solid;
+    border-width: 2px;
+    height: 70%;
+    width: 60%;
+}
+
+.filter-content-inline {
+    padding-left: 3rem;
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+    padding-right: 1rem;
+}
+
+.apply-filter-button {
+    background-color: transparent;
+    border-color: transparent;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: x-large;
 }

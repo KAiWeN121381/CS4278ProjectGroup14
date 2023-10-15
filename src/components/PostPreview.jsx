@@ -3,12 +3,13 @@ import CustomLink from './CustomLink';
 
 
 export default function PostPreview(props) {
+    let linkname = '/postdisplay' + '/' + props.post.ID;
+
     return (
-        <CustomLink to='/postdisplay'>
-            <div className="post">
+        <CustomLink to={linkname}>
+            <div className="post-preview">
                 <img
-                    src={props.post.img}
-                    alt="Temp photo">
+                    src={props.post.img}>
                 </img>
                 <h1 className='text-overlay'>
                     {props.post.title}

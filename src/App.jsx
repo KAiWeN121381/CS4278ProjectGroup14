@@ -17,7 +17,7 @@ function App() {
           <Route index element={<Home />} />
           <Route path='/home' element={<Home />} />
           <Route path='/createpost' element={<CreatePost />} />
-          <Route path='/postdisplay' element={<PostDisplay price='300' start='08/30/1900' end='08/30/2024' distance='18000' />} />
+          <Route path='/postdisplay' element={<PostDisplay price="$8888" start="02/30/1999" end="13/32/2025" distance="18000"/>} />
           <Route path='*' element={<NoPage />} />
         </Routes>
       </div>
