@@ -68,7 +68,7 @@ export default function Create() {
        <div className="form-group">
          <label htmlFor="photos">Photos</label>
          <input
-           type="text"
+           type="file"
            className="form-control"
            id="photos"
            value={form.photos}

@@ -3,7 +3,7 @@ import CustomLink from './CustomLink';
 
 
 export default function PostPreview(props) {
-    let linkname = '/postdisplay' + '/' + props.post.ID;
+    let linkname = '/postdisplay';
 
     return (
         <CustomLink to={linkname}>

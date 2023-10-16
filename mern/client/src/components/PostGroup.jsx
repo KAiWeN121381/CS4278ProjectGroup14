@@ -1,30 +1,36 @@
-import { useState } from "react";
 import PostPreview from "./PostPreview";
-import * as React from 'react';
+import React, { useEffect, useState } from "react";
 import {Post} from "./Post";
 
 export default function PostGroup() {
-    let posts = [
-        // Access database here
-        Post("Title 1"),
-        Post("Title 2"),
-        Post("Title 3"),
-        Post("Title 4"),
-        Post("Title 5"),
-        Post("Title 6"),
-        Post("Title 7"),
-        Post("Title 8"),
-        Post("Title 9")
-    ];
+    const [records, setRecords] = useState([]);
 
-    const [selectedIndex, setSelectedIndex] = useState(-1);
+    // This method fetches the records from the database.
+    useEffect(() => {
+    async function getRecords() {
+        const response = await fetch(`http://localhost:5050/post/`);
+
+        if (!response.ok) {
+        const message = `An error occurred: ${response.statusText}`;
+        window.alert(message);
+        return;
+        }
+
+        const records = await response.json();
+        setRecords(records);
+    }
+
+    getRecords();
+
+    return;
+    }, [records.length]);
 
     return ( 
     <div className="grid-container">
-        {posts.length === 0 && <h1>No posts are found</h1>}
-        {posts.map((post, index) => (
+        {records.length === 0 && <h1>No posts are found</h1>}
+        {records.map((record) => (
             <div className="grid-item">
-                <PostPreview post={post}/>
+                <PostPreview post={Post(record.title, record._id)}/>
             </div>
         ))}
     </div>)

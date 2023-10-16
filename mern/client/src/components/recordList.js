@@ -54,14 +54,16 @@ export default function RecordList() {
  }
 
  // This method will map out the records on the table
- function recordList() {
+  function recordList() {
    return records.map((record) => {
+    let linkname = '/postdisplay' + '/' + record._id;
+
      return (
-       <Record
+        <Record
          record={record}
          deleteRecord={() => deleteRecord(record._id)}
          key={record._id}
-       />
+       />     
      );
    });
  }
