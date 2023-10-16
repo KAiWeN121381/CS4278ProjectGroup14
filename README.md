@@ -1,8 +1,28 @@
-# React + Vite
+# mern-stack-example
+Mern Stack code for the [Mern Tutorial](https://www.mongodb.com/languages/mern-stack-tutorial)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+[![CI](https://github.com/mongodb-developer/mern-stack-example/actions/workflows/main.yaml/badge.svg)](https://github.com/mongodb-developer/mern-stack-example/actions/workflows/main.yaml)
 
-Currently, two official plugins are available:
+## How To Run
+Create the file `mern/server/config.env` with your Atlas URI and the server port:
+```
+ATLAS_URI=mongodb+srv://<username>:<password>@sandbox.jadwj.mongodb.net/
+```
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Start server:
+```
+cd mern/server
+npm install
+npm start
+```
+
+Start Web server
+```
+cd mern/client
+npm install
+npm start
+```
+
+## Disclaimer
+
+Use at your own risk; not a supported MongoDB product

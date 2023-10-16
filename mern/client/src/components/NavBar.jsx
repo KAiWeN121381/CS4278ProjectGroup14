@@ -11,7 +11,7 @@ export default function NavBar () {
             <ul>
                 <CustomLink to='/'><img src={menu} className='nav_img'/></CustomLink> 
                 <CustomLink to='/createpost'><img src={profile} className='nav_img'/></CustomLink>
-                <CustomLink to='/somepage'><img src={setting} className='nav_img'/></CustomLink>
+                <CustomLink to='/edit'><img src={setting} className='nav_img'/></CustomLink>
             </ul>
             <CustomLink to='/' className="site-title"><img src={logo} /></CustomLink>
         </nav>
