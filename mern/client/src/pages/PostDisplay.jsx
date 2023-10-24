@@ -2,15 +2,71 @@ import Lhouse from '../assets/defaulthouse.png'
 import MapComponent from "../components/MapComponent";
 import info from '../assets/info.png'
 
-export default function PostDisplay(props) {
+import React, { useState, useEffect } from "react";
+import { useParams, useNavigate } from "react-router";
+
+export default function PostDisplay() {
+    const [form, setForm] = useState({
+        username: "", // The username / ID
+        title: "",
+        file: null, // The photos
+        price: "",
+    
+        // Change this to calendar later
+        start: "", // Start date
+        end: "", // End date
+        
+        distance: "",
+        address: "",
+    
+        // facilities
+        pet: false,
+        gym: false,
+        kitchen: false,
+    
+        description: "",
+    
+        records: [],
+     });
+
+    const params = useParams();
+    const navigate = useNavigate();
+
+    useEffect(() => {
+    async function fetchData() {
+        const id = params.id.toString();
+        const response = await fetch(`http://localhost:5050/posts/${params.id.toString()}`);
+
+        if (!response.ok) {
+        const message = `An error has occurred: ${response.statusText}`;
+        window.alert(message);
+        return;
+        }
+
+        const record = await response.json();
+        if (!record) {
+        window.alert(`Record with id ${id} not found`);
+        navigate("/");
+        return;
+        }
+
+        setForm(record);
+    }
+
+    fetchData();
+
+    return;
+    }, [params.id, navigate]);
+
+
     return (
         <div>
             <div className="left_right_separator">
                 <div className="post-left">
                     <div className="post-image">
-                        <h1>Post title</h1>
+                        <h1>{form.title}</h1>
                         <img
-                            src={Lhouse}>
+                            src={form.file===null ? Lhouse : form.file}>
                         </img>
                     </div>      
                 </div>
@@ -23,15 +79,15 @@ export default function PostDisplay(props) {
                         <div className="post-details-text">
                             <div className="post-detail-inline">
                                 <h5>Price: </h5> 
-                                <h5> {props.price} / Month</h5>
+                                <h5> {form.price} / Month</h5>
                             </div>
                             <div className="post-detail-inline">
                                 <h5>Duration: </h5> 
-                                <h5> {props.start} - {props.end}</h5>
+                                <h5> {form.start} - {form.end}</h5>
                             </div>
                             <div className="post-detail-inline">
                                 <h5>Distance to campus: </h5>
-                                <h5> {props.distance} Mi</h5>
+                                <h5> {form.distance} Mi</h5>
                             </div>
                             <div>
                                 <h5>Facilities: </h5>

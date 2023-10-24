@@ -6,14 +6,14 @@ const router = express.Router();
 
 // This section will help you get a list of all the records.
 router.get("/", async (req, res) => {
-  let collection = await db.collection("post");
+  let collection = await db.collection("posts");
   let results = await collection.find({}).toArray();
   res.send(results).status(200);
 });
 
 // This section will help you get a single record by id
 router.get("/:id", async (req, res) => {
-  let collection = await db.collection("post");
+  let collection = await db.collection("posts");
   let query = {_id: new ObjectId(req.params.id)};
   let result = await collection.findOne(query);
 
@@ -24,12 +24,24 @@ router.get("/:id", async (req, res) => {
 // This section will help you create a new record.
 router.post("/", async (req, res) => {
   let newDocument = {
-    name: req.body.name,
+    username: req.body.username,
     title: req.body.title,
-    photos: req.body.photos,
+    file: req.body.file,
+    price: req.body.price,
+    
+    start: req.body.start,
+    end: req.body.end,
+
+    distance: req.body.distance,
+    address: req.body.address,
+
+    pet_friendly: req.body.pet_friendly,
+    gym: req.body.gym,
+    kitchen: req.body.kitchen,
+
     description: req.body.description
   };
-  let collection = await db.collection("post");
+  let collection = await db.collection("posts");
   let result = await collection.insertOne(newDocument);
   res.send(result).status(204);
 });
@@ -39,14 +51,26 @@ router.patch("/:id", async (req, res) => {
   const query = { _id: new ObjectId(req.params.id) };
   const updates =  {
     $set: {
-      name: req.body.name,
+      username: req.body.username,
       title: req.body.title,
-      photos: req.body.photos,
+      file: req.body.file,
+      price: req.body.price,
+      
+      start: req.body.start,
+      end: req.body.end,
+
+      distance: req.body.distance,
+      address: req.body.address,
+
+      pet_friendly: req.body.pet_friendly,
+      gym: req.body.gym,
+      kitchen: req.body.kitchen,
+      
       description: req.body.description
     }
   };
 
-  let collection = await db.collection("post");
+  let collection = await db.collection("posts");
   let result = await collection.updateOne(query, updates);
   res.send(result).status(200);
 });
@@ -55,7 +79,7 @@ router.patch("/:id", async (req, res) => {
 router.delete("/:id", async (req, res) => {
   const query = { _id: new ObjectId(req.params.id) };
 
-  const collection = db.collection("post");
+  const collection = db.collection("posts");
   let result = await collection.deleteOne(query);
 
   res.send(result).status(200);

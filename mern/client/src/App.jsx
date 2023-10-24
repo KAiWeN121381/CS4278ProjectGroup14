@@ -14,12 +14,13 @@ function App() {
     <div>
       <NavBar />
       <div>
+        {/* Set up Routes for links */}
         <Routes>
           <Route index element={<Home />} />
           <Route path='/home' element={<Home />} />
           <Route path='/createpost' element={<Create />} />
-          <Route path='/edit' element={<Edit />} />
-          <Route path='/postdisplay' element={<PostDisplay price="$8888" start="02/30/1999" end="13/32/2025" distance="18000"/>} />
+          <Route path='/edit/:id' element={<Edit />} />
+          <Route path='/postdisplay/:id' element={<PostDisplay />} />
           <Route path='*' element={<NoPage />} />
         </Routes>
       </div>

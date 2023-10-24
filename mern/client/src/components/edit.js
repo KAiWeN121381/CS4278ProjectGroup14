@@ -3,19 +3,34 @@ import { useParams, useNavigate } from "react-router";
 
 export default function Edit() {
  const [form, setForm] = useState({
-   name: "",
-   title: "",
-   photos: "",
-   description: "",
-   records: [],
+    username: "", // The username / ID
+    title: "",
+    file: null, // The photos
+    price: "",
+
+    // Change this to calendar later
+    start: "", // Start date
+    end: "", // End date
+    
+    distance: "",
+    address: "",
+
+    // facilities
+    pet: false,
+    gym: false,
+    kitchen: false,
+
+    description: "",
+
+    records: [],
  });
  const params = useParams();
  const navigate = useNavigate();
 
  useEffect(() => {
    async function fetchData() {
-     const id = params.id.toString();
-     const response = await fetch(`http://localhost:5050/post/${params.id.toString()}`);
+     const id = params.id.toString(); // This is undefined
+     const response = await fetch(`http://localhost:5050/posts/${params.id.toString()}`);
 
      if (!response.ok) {
        const message = `An error has occurred: ${response.statusText}`;
@@ -48,14 +63,26 @@ export default function Edit() {
  async function onSubmit(e) {
    e.preventDefault();
    const editedPost = {
-     name: form.name,
+     username: form.username,
      title: form.title,
-     photos: form.photos,
+     file: form.file,
+     price: form.price,
+
+     start: form.start,
+     end: form.end,
+
+     distance: form.distance,
+     address: form.address,
+
+     pet: form.pet,
+     gym: form.gym,
+     kitchen: form.kitchen,
+
      description: form.description,
    };
 
    // This will send a post request to update the data in the database.
-   await fetch(`http://localhost:5050/post/${params.id}`, {
+   await fetch(`http://localhost:5050/posts/${params.id}`, {
      method: "PATCH",
      body: JSON.stringify(editedPost),
      headers: {
@@ -72,17 +99,17 @@ export default function Edit() {
      <h3>Update Record</h3>
      <form onSubmit={onSubmit}>
        <div className="form-group">
-         <label htmlFor="name">Name: </label>
+         <label htmlFor="username">Name</label>
          <input
            type="text"
            className="form-control"
-           id="name"
-           value={form.name}
-           onChange={(e) => updateForm({ name: e.target.value })}
+           id="username"
+           value={form.username}
+           onChange={(e) => updateForm({ username: e.target.value })}
          />
        </div>
        <div className="form-group">
-         <label htmlFor="title">Title: </label>
+         <label htmlFor="title">Title</label>
          <input
            type="text"
            className="form-control"
@@ -92,17 +119,97 @@ export default function Edit() {
          />
        </div>
        <div className="form-group">
-         <label htmlFor="photos">Photos: </label>
+         <label htmlFor="file">Photos</label>
          <input
-           type="text"
+           type="file"
            className="form-control"
            id="photos"
-           value={form.photos}
-           onChange={(e) => updateForm({ photos: e.target.value })}
+           value={form.file}
+           onChange={(e) => updateForm({ file: e.target.value })}
          />
        </div>
        <div className="form-group">
-         <label htmlFor="description">Description: </label>
+         <label htmlFor="price">Price</label>
+         <input
+           type="text"
+           className="form-control"
+           id="price"
+           value={form.price}
+           onChange={(e) => updateForm({ price: e.target.value })}
+         />
+       </div>
+       <div className="form-group">
+         <label htmlFor="start">Start date</label>
+         <input
+           type="date"
+           className="form-control"
+           id="start"
+           value={form.start}
+           onChange={(e) => updateForm({ start: e.target.value })}
+         />
+       </div>
+       <div className="form-group">
+         <label htmlFor="end">End</label>
+         <input
+           type="date"
+           className="form-control"
+           id="end"
+           value={form.end}
+           onChange={(e) => updateForm({ end: e.target.value })}
+         />
+       </div>
+       <div className="form-group">
+         <label htmlFor="distance">Distance</label>
+         <input
+           type="text"
+           className="form-control"
+           id="distance"
+           value={form.distance}
+           onChange={(e) => updateForm({ distance: e.target.value })}
+         />
+       </div>
+       <div className="form-group">
+         <label htmlFor="address">Address</label>
+         <input
+           type="text"
+           className="form-control"
+           id="address"
+           value={form.address}
+           onChange={(e) => updateForm({ address: e.target.value })}
+         />
+       </div>
+       <div className="form-group">
+         <label htmlFor="pet">pet</label>
+         <input
+           type="checkbox"
+           className="form-control"
+           id="pet"
+           checked={form.pet}
+           onChange={(e) => updateForm({ pet: e.target.checked })}
+         />
+       </div>
+       <div className="form-group">
+         <label htmlFor="gym">gym</label>
+         <input
+           type="checkbox"
+           className="form-control"
+           id="gym"
+           checked={form.gym}
+           onChange={(e) => updateForm({ gym: e.target.checked })}
+         />
+       </div>
+       <div className="form-group">
+         <label htmlFor="kitchen">kitchen</label>
+         <input
+           type="checkbox"
+           className="form-control"
+           id="kitchen"
+           checked={form.kitchen}
+           onChange={(e) => updateForm({ kitchen: e.target.checked })}
+         />
+       </div>
+       <div className="form-group">
+         <label htmlFor="description">Description</label>
          <input
            type="text"
            className="form-control"
@@ -111,12 +218,10 @@ export default function Edit() {
            onChange={(e) => updateForm({ description: e.target.value })}
          />
        </div>
-       <br />
-
        <div className="form-group">
          <input
            type="submit"
-           value="Update Record"
+           value="Update post"
            className="btn btn-primary"
          />
        </div>
