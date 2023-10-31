@@ -8,6 +8,7 @@ import Edit from "./components/edit"
 import NoPage from './pages/NoPage';
 import NavBar from './components/NavBar';
 import PostDisplay from './pages/PostDisplay';
+import LoginPage from './pages/Login';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           <Route path='/home' element={<Home />} />
           <Route path='/createpost' element={<Create />} />
           <Route path='/edit/:id' element={<Edit />} />
+          <Route path='/login' element={<LoginPage />} />
           <Route path='/postdisplay/:id' element={<PostDisplay />} />
           <Route path='*' element={<NoPage />} />
         </Routes>
