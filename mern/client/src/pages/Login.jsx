@@ -1,15 +1,17 @@
-import { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 export default function LoginPage() {
     const [email, setEmail] = useState("")
 
-    handleChange = (e) => {
-        let userEmail = e.value;
+    const handleChange = (e) => {
+        let userEmail = e.target.value;
         setEmail(userEmail);
     }
 
-    handleSubmit = (e) => {
-        // login stuff here
+    const handleSubmit = (e) => {
+        console.log(email)
+        // Login stuff here
+        // email information is the variable    email
     }
 
     return (
