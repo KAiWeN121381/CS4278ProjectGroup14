@@ -10,6 +10,7 @@ import NavBar from './components/NavBar';
 import PostDisplay from './pages/PostDisplay';
 import LoginPage from './pages/Login';
 import Profile from './pages/Profile';
+import CreateProfile from './pages/CreateProfile';
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
           <Route path='/login' element={<LoginPage />} />
           <Route path='/postdisplay/:id' element={<PostDisplay />} />
           <Route path='/profile/:id' element={<Profile />} />
+          <Route path='/newprofile' element={<CreateProfile />} />
           <Route path='*' element={<NoPage />} />
         </Routes>
       </div>
