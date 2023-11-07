@@ -14,11 +14,10 @@ export default function Profile() {
             </div>
             <div>
                 <h2>Your Posts</h2>
+                <PostPreview post={/*Replace this with the post information saved in the database*/}/>
                 <CustomLink to='/createpost'><button className='make-post-button'>Make a Post</button></CustomLink>
             </div>
         </div>
         
     )
 }
-
-//<PostPreview post={/*Replace this with the post information saved in the database*/}/>
