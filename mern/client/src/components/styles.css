@@ -237,3 +237,11 @@ body {
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     font-size: x-large;
 }
+
+.make-post-button {
+    border-radius: 6px;
+    background-color: #ffa60d;
+    width: 8rem;
+    height: 4rem;
+    outline: none;
+}

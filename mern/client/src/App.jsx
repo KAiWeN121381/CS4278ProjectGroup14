@@ -9,6 +9,7 @@ import NoPage from './pages/NoPage';
 import NavBar from './components/NavBar';
 import PostDisplay from './pages/PostDisplay';
 import LoginPage from './pages/Login';
+import Profile from './pages/Profile';
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
           <Route path='/edit/:id' element={<Edit />} />
           <Route path='/login' element={<LoginPage />} />
           <Route path='/postdisplay/:id' element={<PostDisplay />} />
+          <Route path='/profile/:id' element={<Profile />} />
           <Route path='*' element={<NoPage />} />
         </Routes>
       </div>
