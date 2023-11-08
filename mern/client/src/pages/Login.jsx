@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import CustomLink from "../components/CustomLink";
 
 export default function LoginPage() {
     const [email, setEmail] = useState("")
@@ -18,7 +19,8 @@ export default function LoginPage() {
         <div>
             <h3>Email :</h3> {" "}
             <input type="email" onChange={handleChange} />
-            <button onClick={handleSubmit}>Submit</button>
+            <button onClick={handleSubmit} className="general-button">Submit</button>
+            <CustomLink to="/newprofile"><button className="general-button">Create New Profile</button></CustomLink>
         </div>
-        )
+    )
 }

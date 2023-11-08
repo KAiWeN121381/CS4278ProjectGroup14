@@ -12,7 +12,7 @@ body {
     height: flex;
     padding: 0 1rem;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     list-style-type: none;   
 }
 
@@ -244,4 +244,16 @@ body {
     width: 8rem;
     height: 4rem;
     outline: none;
+}
+.general-button {
+    border-radius: 6px;
+    background-color: #ffa60d;
+    width: fit-content;
+    height: auto;
+    outline: none;
+}
+
+.form-input {
+    padding: 12px 20px;
+    margin: 8px 0;
 }

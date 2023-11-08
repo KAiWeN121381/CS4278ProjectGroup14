@@ -8,16 +8,22 @@ export default function Profile() {
     return (
         <div className='left_right_separator'>
             <div>
-                <h3>Username: Replace this with username</h3>
-                <h3>Email: Replace with email</h3>
-                <h3>Phone Number: </h3>
+                <h1>Profile</h1>
+                <div>
+                    <h3>Username: </h3>
+                    <h3>Email: </h3>
+                    <h3>Phone Number: </h3>
+                </div>
             </div>
             <div>
                 <h2>Your Posts</h2>
-                <PostPreview post={/*Replace this with the post information saved in the database*/}/>
+                
                 <CustomLink to='/createpost'><button className='make-post-button'>Make a Post</button></CustomLink>
             </div>
         </div>
         
     )
 }
+
+
+// <PostPreview post={/*Replace this with the post information saved in the database*/}/>

@@ -13,7 +13,7 @@ export default function NavBar () {
         <nav className="nav">
             {/* Temporary links to pages. Replace with the actual corresponding links when pages are created. */}
             <ul>
-                <CustomLink to='/'><img src={menu} className='nav_img'/></CustomLink> 
+                <CustomLink to='/edit/654a6237392ea420740a5b38'><img src={menu} className='nav_img'/></CustomLink> 
                 <CustomLink to='/profile/123'><img src={profile} className='nav_img'/></CustomLink>
                 {/* A temporary link to a certain post for edit; replace with /edit/:id when fully connected to DB */}
                 <CustomLink to='/login'><img src={setting} className='nav_img'/></CustomLink>

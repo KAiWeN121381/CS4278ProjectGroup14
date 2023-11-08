@@ -1,28 +1,57 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router";
+import React, { useState, useEffect } from "react";
+import { useParams, useNavigate } from "react-router";
 
-export default function Create() {
+export default function EditPost() {
  const [form, setForm] = useState({
-   username: "", // The username / ID
-   title: "",
-   file: null, // The photos
-   price: "",
+    username: "", // The username / ID
+    title: "",
+    file: null, // The photos
+    price: "",
 
-   // Change this to calendar later
-   start: "", // Start date
-   end: "", // End date
+    // Change this to calendar later
+    start: "", // Start date
+    end: "", // End date
+    
+    distance: "",
+    address: "",
 
-   distance: "",
-   address: "",
+    // facilities
+    pet: false,
+    gym: false,
+    kitchen: false,
 
-   // facilities
-   pet: false,
-   gym: false,
-   kitchen: false,
+    description: "",
 
-   description: "",
+    records: [],
  });
+ const params = useParams();
  const navigate = useNavigate();
+
+ useEffect(() => {
+   async function fetchData() {
+     const id = params.id.toString(); // This is undefined
+     const response = await fetch(`http://localhost:5050/posts/${params.id.toString()}`);
+
+     if (!response.ok) {
+       const message = `An error has occurred: ${response.statusText}`;
+       window.alert(message);
+       return;
+     }
+
+     const record = await response.json();
+     if (!record) {
+       window.alert(`Record with id ${id} not found`);
+       navigate("/");
+       return;
+     }
+
+     setForm(record);
+   }
+
+   fetchData();
+
+   return;
+ }, [params.id, navigate]);
 
  // These methods will update the state properties.
  function updateForm(value) {
@@ -31,34 +60,43 @@ export default function Create() {
    });
  }
 
- // This function will handle the submission.
  async function onSubmit(e) {
    e.preventDefault();
+   const editedPost = {
+     username: form.username,
+     title: form.title,
+     file: form.file,
+     price: form.price,
 
-   // When a post request is sent to the create url, we'll add a new record to the database.
-   const newPost = { ...form };
+     start: form.start,
+     end: form.end,
 
-   await fetch("http://localhost:5050/posts", {
-     method: "POST",
+     distance: form.distance,
+     address: form.address,
+
+     pet: form.pet,
+     gym: form.gym,
+     kitchen: form.kitchen,
+
+     description: form.description,
+   };
+
+   // This will send a post request to update the data in the database.
+   await fetch(`http://localhost:5050/posts/${params.id}`, {
+     method: "PATCH",
+     body: JSON.stringify(editedPost),
      headers: {
-       "Content-Type": "application/json",
+       'Content-Type': 'application/json'
      },
-     body: JSON.stringify(newPost),
-   })
-   .catch(error => {
-     window.alert(error);
-     return;
    });
 
-   setForm({ username: "", title: "", file: null, price: "", start: "", end: "", distance: "", address: "",
-   pet: false, gym: false, kitchen: false, description: "", });
    navigate("/");
  }
 
- // This following section will display the form that takes the input from the user.
+ // This following section will display the form that takes input from the user to update the data.
  return (
    <div>
-     <h3>Create New Post</h3>
+     <h3>Update Record</h3>
      <form onSubmit={onSubmit}>
        <div className="form-group">
          <label htmlFor="username">Name</label>
@@ -183,7 +221,7 @@ export default function Create() {
        <div className="form-group">
          <input
            type="submit"
-           value="Create post"
+           value="Update post"
            className="btn btn-primary"
          />
        </div>

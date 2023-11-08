@@ -28,7 +28,7 @@ export default function CreateProfile() {
         const newUser = { ...info };
 
         // CHANGE THIS
-        await fetch("http://localhost:5050/posts", {
+        await fetch("http://localhost:5050/users", {
             method: "POST",
             headers: {
             "Content-Type": "application/json",
@@ -50,10 +50,10 @@ export default function CreateProfile() {
 
     return (
         <div>
-          <h3>Create New Post</h3>
+          <h3>Create Profile</h3>
             <form onSubmit={onSubmit}>
                 <div className="form-group">
-                    <label htmlFor="firstName">First Name</label>
+                    <label htmlFor="firstName">First Name </label>
                     <input
                         type="text"
                         className="form-control"
@@ -63,7 +63,7 @@ export default function CreateProfile() {
                     />
                 </div>
                 <div className="form-group">
-                    <label htmlFor="lastName">Last Name</label>
+                    <label htmlFor="lastName">Last Name </label>
                     <input
                         type="text"
                         className="form-control"
@@ -73,7 +73,7 @@ export default function CreateProfile() {
                     />
                 </div>
                 <div className="form-group">
-                    <label htmlFor="username">Username</label>
+                    <label htmlFor="username">Username </label>
                     <input
                         type="text"
                         className="form-control"
@@ -83,7 +83,7 @@ export default function CreateProfile() {
                     />
                 </div>
                 <div className="form-group">
-                    <label htmlFor="email">Email</label>
+                    <label htmlFor="email">Email </label>
                     <input
                         type="email"
                         placeholder=""
@@ -94,7 +94,7 @@ export default function CreateProfile() {
                     />
                 </div>
                 <div className="form-group">
-                    <label htmlFor="phone">Phone Number</label>
+                    <label htmlFor="phone">Phone Number </label>
                     <input
                         type="tel"
                         className="form-control"

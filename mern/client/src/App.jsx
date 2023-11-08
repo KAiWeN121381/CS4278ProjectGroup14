@@ -3,8 +3,8 @@ import { Routes, Route} from 'react-router-dom'
 import "./components/styles.css"
 
 import Home from "./pages/Home";
-import Create from "./components/create";
-import Edit from "./components/edit"
+import Create from "./pages/CreatePost";
+import Edit from "./pages/EditPost"
 import NoPage from './pages/NoPage';
 import NavBar from './components/NavBar';
 import PostDisplay from './pages/PostDisplay';

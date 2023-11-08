@@ -1,7 +1,5 @@
-import LocationSelection from "../components/LocationSelection";
 import MapComponent from "../components/MapComponent";
 import PostGroup from "../components/PostGroup";
-import SearchBar from "../components/SearchBar";
 
 // The home page
 export default function Home() {
@@ -15,11 +13,7 @@ export default function Home() {
                 <MapComponent />
             </div>
             <div className="home-right">
-                {/* <div className="search-area">
-                    <LocationSelection />
-                    <SearchBar />
-                </div> */}
-                <PostGroup />
+                <PostGroup key="PostGroup"/>
             </div>
         </div>
     </div>)
