@@ -17,9 +17,11 @@ export default function LoginPage() {
 
     return (
         <div>
-            <h3>Email :</h3> {" "}
+            <h4>Login:</h4>
+            Email : {" "}
             <input type="email" onChange={handleChange} />
             <button onClick={handleSubmit} className="general-button">Submit</button>
+            <br /><br />Don't have an account?
             <CustomLink to="/newprofile"><button className="general-button">Create New Profile</button></CustomLink>
         </div>
     )

@@ -13,6 +13,8 @@ export default function Profile() {
                     <h3>Username: </h3>
                     <h3>Email: </h3>
                     <h3>Phone Number: </h3>
+                    {/* not logged in &&*/}
+                    <CustomLink to='/login'><button className='make-post-button'>Login</button></CustomLink>
                 </div>
             </div>
             <div>
@@ -21,7 +23,6 @@ export default function Profile() {
                 <CustomLink to='/createpost'><button className='make-post-button'>Make a Post</button></CustomLink>
             </div>
         </div>
-        
     )
 }
 

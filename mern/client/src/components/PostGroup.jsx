@@ -67,12 +67,21 @@ export default function PostGroup() {
         </div>
     )
 
+    function undoSearch() {
+        setFiltered(false);
+    }
+
     // Search functionality
     function searchRecords(searchKeyword) {
-        searchKeyword = searchKeyword.toLowerCase();
-        const newRecords = records.filter((record) => (record.title.toLowerCase().indexOf(searchKeyword) !== -1) || (record.description.toLowerCase().indexOf(searchKeyword) !== -1));
-        setFRecords(newRecords);
-        setFiltered(true);
+        if (searchKeyword != "") {
+            searchKeyword = searchKeyword.toLowerCase();
+            const newRecords = records.filter((record) => (record.title.toLowerCase().indexOf(searchKeyword) !== -1) || (record.description.toLowerCase().indexOf(searchKeyword) !== -1));
+            setFRecords(newRecords);
+            setFiltered(true);
+        }
+        else {
+            undoSearch();
+        }
     }
 
     function SearchBar () {
@@ -96,15 +105,18 @@ export default function PostGroup() {
             searchRecords(searchInfo);
         }
     
-        return (<div>
-            <input className='input-bar' type='search' placeholder='Search for housing' onChange={handleChange} />
-            <button onClick={handleSubmit} className='filter-button'>
-                <FiSearch style={{height: '1.5rem', width:'1.5rem'}}/>
-            </button>
+        return (<div className="search-bar">
+            <form onSubmit={handleSubmit}>
+                <input className='input-bar' type='search' placeholder='Search for housing' onChange={handleChange} />
+                <button type="submit" className='filter-button'>
+                    <FiSearch style={{height: '1.5rem', width:'1.5rem'}}/>
+                </button>
+            </form>
             <button className="filter-button" onClick={isOpen ? closeFilter : openFilter}>
-                <img src={filter} style={{height: '1.5rem', width:'1.5rem'}}></img>
-            </button>
+                    <img src={filter} style={{height: '1.5rem', width:'1.5rem'}}></img>
+                </button>
             <Filter isOpen={isOpen} onClose={closeFilter} key="Unique filter" />
+            {filtered && <button onClick={undoSearch} className="cancel-button">X</button>}
         </div>)
     }
 
@@ -159,96 +171,97 @@ export default function PostGroup() {
     
         return  (
             <div className="filter">
-                <div className="filter-content">
-                    <div>
-                        {/* The close button */}
-                        <button onClick={onClose}
-                        style={{paddingLeft:"99%", backgroundColor:"transparent", borderColor:"transparent"}}>
-                            X</button>
-                        {/* Price range input */}
-                        <div className="filter-content-price">
-                            <p>Price Range:</p>
-                            <div>
-                                <div className="filter-content-inline">
-                                    <p>Minimum: </p><img src={pricetag}/>
-                                        <input 
-                                            autoFocus={lastInput === "minPrice" ? true : false}
-                                            key="minPrice"
-                                            type="text" 
-                                            id="minPrice" 
-                                            name="minPrice" 
-                                            value={filters.minPrice}
-                                            onChange={updateFilter}
-                                            onBlur={e => {
-                                                if (e.relatedTarget === null) {
-                                                    e.target.focus();
-                                                }
-                                            }}/>
-                                </div>
-                                <div className="filter-content-inline">
-                                    <p>Maximum: </p><img src={pricetag}/>
-                                        <input 
-                                            autoFocus={lastInput === "maxPrice" ? true : false}
-                                            key="maxPrice"  
-                                            type="text" 
-                                            id="maxPrice" 
-                                            name="maxPrice" 
-                                            value={filters.maxPrice}
-                                            onChange={updateFilter}
-                                            onBlur={e => {
-                                                if (e.relatedTarget === null) {
-                                                    e.target.focus();
-                                                }
-                                            }}/>
-                                </div>
+                <form className="filter-content" onSubmit={onSubmit}>
+                    {/* The close button */}
+                    <button onClick={onClose}
+                    className="cancel-button"
+                    style={{paddingLeft:"99%"}}>
+                        X</button>
+                    {/* Price range input */}
+                    <div className="filter-content-price">
+                        <p>Price Range:</p>
+                        <div>
+                            <div className="filter-content-inline">
+                                <p>Minimum: </p><img src={pricetag}/>
+                                <input 
+                                    autoFocus={lastInput === "minPrice" ? true : false}
+                                    key="minPrice"
+                                    type="text" 
+                                    id="minPrice" 
+                                    name="minPrice" 
+                                    autoComplete="off"
+                                    value={filters.minPrice}
+                                    onChange={updateFilter}
+                                    onBlur={e => {
+                                        if (e.relatedTarget === null) {
+                                            e.target.focus();
+                                        }
+                                    }}/>
+                            </div>
+                            <div className="filter-content-inline">
+                                <p>Maximum: </p><img src={pricetag}/>
+                                <input 
+                                    autoFocus={lastInput === "maxPrice" ? true : false}
+                                    key="maxPrice"  
+                                    type="text" 
+                                    id="maxPrice" 
+                                    name="maxPrice" 
+                                    autoComplete="off"
+                                    value={filters.maxPrice}
+                                    onChange={updateFilter}
+                                    onBlur={e => {
+                                        if (e.relatedTarget === null) {
+                                            e.target.focus();
+                                        }
+                                    }}/>
                             </div>
                         </div>
-                        {/* Facility selection */}
-                        <div className="filter-content-facilities">
-                            <p>Facilities:</p>
-                        </div>
-                        {/* Stay duration input */}
-                        <div className="filter-content-duration">
-                            <p>Intended Duration:</p>
-                            <div>
-                                <div className="filter-content-inline">
-                                    <p>Check-in: </p><img src={calendar}/>
-                                        <input 
-                                            autoFocus={lastInput === "start" ? true : false}
-                                            key="start"
-                                            type="date" 
-                                            id="start" 
-                                            name="start" 
-                                            value={filters.start}
-                                            onChange={updateFilter}
-                                            onBlur={e => {
-                                                if (e.relatedTarget === null) {
-                                                    e.target.focus();
-                                                }
-                                            }}/>
-                                </div>
-                                <div className="filter-content-inline">
-                                    <p>Check-out: </p><img src={calendar}/>
-                                        <input 
-                                            autoFocus={lastInput === "end" ? true : false}
-                                            key="end"
-                                            type="date" 
-                                            id="end" 
-                                            name="end" 
-                                            value={filters.end}
-                                            onChange={updateFilter}
-                                            onBlur={e => {
-                                                if (e.relatedTarget === null) {
-                                                    e.target.focus();
-                                                }
-                                            }}/>
-                                </div>
+                    </div>
+                    {/* Facility selection */}
+                    <div className="filter-content-facilities">
+                        <p>Facilities:</p>
+                    </div>
+                    {/* Stay duration input */}
+                    <div className="filter-content-duration">
+                        <p>Intended Duration:</p>
+                        <div>
+                            <div className="filter-content-inline">
+                                <p>Check-in: </p><img src={calendar} style={{height:"4vh"}}/>
+                                <input 
+                                    autoFocus={lastInput === "start" ? true : false}
+                                    key="start"
+                                    type="date" 
+                                    id="start" 
+                                    name="start" 
+                                    value={filters.start}
+                                    onChange={updateFilter}
+                                    onBlur={e => {
+                                        if (e.relatedTarget === null) {
+                                            e.target.focus();
+                                        }
+                                    }}/>
+                            </div>
+                            <div className="filter-content-inline">
+                                <p>Check-out: </p><img src={calendar} style={{height:"4vh"}}/>
+                                <input 
+                                    autoFocus={lastInput === "end" ? true : false}
+                                    key="end"
+                                    type="date" 
+                                    id="end" 
+                                    name="end" 
+                                    value={filters.end}
+                                    onChange={updateFilter}
+                                    onBlur={e => {
+                                        if (e.relatedTarget === null) {
+                                            e.target.focus();
+                                        }
+                                    }}/>
                             </div>
                         </div>
                     </div>
                     {/* The apply button */}
-                    <button onClick={onSubmit} className="apply-filter-button">Apply</button>
-                </div>
+                    <button type="submit" className="apply-filter-button">Apply</button>
+                </form>
             </div>
         )
     }

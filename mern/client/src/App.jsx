@@ -11,6 +11,7 @@ import PostDisplay from './pages/PostDisplay';
 import LoginPage from './pages/Login';
 import Profile from './pages/Profile';
 import CreateProfile from './pages/CreateProfile';
+import Settings from './pages/Settings';
 
 function App() {
   return (
@@ -24,9 +25,10 @@ function App() {
           <Route path='/createpost' element={<Create />} />
           <Route path='/edit/:id' element={<Edit />} />
           <Route path='/login' element={<LoginPage />} />
+          <Route path='/newprofile' element={<CreateProfile />} />
           <Route path='/postdisplay/:id' element={<PostDisplay />} />
           <Route path='/profile/:id' element={<Profile />} />
-          <Route path='/newprofile' element={<CreateProfile />} />
+          <Route path='/settings' element={<Settings />} />
           <Route path='*' element={<NoPage />} />
         </Routes>
       </div>

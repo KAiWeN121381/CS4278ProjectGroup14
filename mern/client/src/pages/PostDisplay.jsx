@@ -73,7 +73,7 @@ export default function PostDisplay() {
                 <div className="post-right">
                     <div style={{display:'flex'}}>
                         <h1>Property details</h1>
-                        <img src={info} style={{width:'2.5rem', height:'2.5rem'}}/>
+                        <img src={info} style={{width:'2.5vh', height:'2.5vh', marginTop:'3vh', marginLeft:'0.5vw'}}/>
                     </div>
                     <div className="post-details">
                         <div className="post-details-text">
