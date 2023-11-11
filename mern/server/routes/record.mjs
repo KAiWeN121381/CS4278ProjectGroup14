@@ -5,10 +5,15 @@ import { ObjectId } from "mongodb";
 const router = express.Router();
 
 // This section will help you get a list of all the records.
-router.get("/", async (req, res) => {
-  let collection = await db.collection("posts");
-  let results = await collection.find({}).toArray();
-  res.send(results).status(200);
+router.get('/', async (req, res) => {
+  try {
+    const collection = db.collection('posts'); // Use the db object to access the collection
+    const result = await collection.find({}).toArray();
+    res.json(result);
+  } catch (error) {
+    console.error('Error fetching data:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
 });
 
 // This section will help you get a single record by id
