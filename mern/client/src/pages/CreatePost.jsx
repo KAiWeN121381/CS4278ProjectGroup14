@@ -38,7 +38,7 @@ export default function CreatePost() {
    // When a post request is sent to the create url, we'll add a new record to the database.
    const newPost = { ...form };
 
-   await fetch("http://localhost:5050/posts", {
+   await fetch("http://52.15.93.98:5050/posts", {
      method: "POST",
      headers: {
        "Content-Type": "application/json",

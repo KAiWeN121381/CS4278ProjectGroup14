@@ -35,7 +35,7 @@ export default function PostDisplay() {
     useEffect(() => {
     async function fetchData() {
         const id = params.id.toString();
-        const response = await fetch(`http://localhost:5050/posts/${params.id.toString()}`);
+        const response = await fetch(`http://52.15.93.98:5050/posts/${params.id.toString()}`);
 
         if (!response.ok) {
         const message = `An error has occurred: ${response.statusText}`;
