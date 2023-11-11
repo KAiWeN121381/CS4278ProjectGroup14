@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import { useNavigate } from "react-router";
 
-// Access by changing website address to http://52.15.93.98:3000/newprofile
+// Access by changing website address to http://172.31.23.255:3000/newprofile
 
 export default function CreateProfile() {
     const [info, setInfo] = useState({
@@ -28,7 +28,7 @@ export default function CreateProfile() {
         const newUser = { ...info };
 
         // CHANGE THIS
-        await fetch("http://52.15.93.98:5050/users", {
+        await fetch("http://172.31.23.255:5050/users", {
             method: "POST",
             headers: {
             "Content-Type": "application/json",
