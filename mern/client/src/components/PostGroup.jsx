@@ -108,26 +108,35 @@ export default function PostGroup() {
         </div>)
     }
 
+    function dateIsGreater(d1, d2) {
+        let date1 = new Date(d1);
+        let date2 = new Date(d2);
+        return date1 >= date2;
+    }
+
     // Filter functionality
     function filterPosts() {
         let tempRecords = records;
-        console.log("Records", records)
-        console.log("Temp", tempRecords)
         if(filters.maxPrice !== "") {
             tempRecords = tempRecords.filter((record) => Number(record.price) <= Number(filters.maxPrice))
+            console.log("MaxPrice", tempRecords)
         }
+        
         if(filters.minPrice !== "") {
             tempRecords = tempRecords.filter((record) => Number(record.price) >= Number(filters.minPrice))
+            console.log("MixPrice", tempRecords)
         }
-        // if(filters.start !== "") {
-        //     const newRecords = fRecords.filter((record) => Number(record.start) <= Number(filters.start))
-        //     setFRecords(newRecords)
-        // }
-        // if(filters.end !== "") {
-        //     const newRecords = fRecords.filter((record) => Number(record.end) >= Number(filters.end))
-        //     setFRecords(newRecords)
-        // }
-        console.log("Temp2", tempRecords)
+        
+        if(filters.start !== "") {
+            tempRecords = tempRecords.filter((record) => dateIsGreater(filters.start, record.start))
+            console.log("Start", tempRecords)
+        }
+        
+        if(filters.end !== "") {
+            tempRecords = tempRecords.filter((record) => dateIsGreater(record.end, filters.end))
+            console.log("End", tempRecords)
+        }
+        
         setFRecords(tempRecords);
         setFiltered(true);
         console.log("Filter results" , fRecords)
