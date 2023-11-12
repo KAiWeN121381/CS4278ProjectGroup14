@@ -26,6 +26,8 @@ body {
     margin-top: 2vh;
     display: inline-flex;
     list-style-type: none; 
+    position: fixed;
+    left: 0;
 }
 
 .nav_img {
@@ -42,7 +44,6 @@ body {
     margin: 0;
     list-style-type: none;   
     display: flex;
-    gap: 25vw;
 }
 
 .nav a {

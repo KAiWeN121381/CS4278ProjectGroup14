@@ -33,12 +33,12 @@ export default function NavBar () {
                     </div>
                     
                     <CustomLink to='/' ><img src={logo} className="site-title" /></CustomLink>
-                    <CustomLink to='/createpost'><button className='make-post-button'>Make a Post</button></CustomLink>
+                    <CustomLink to='/createpost' style={{position:"fixed", right:"0"}}><button className='make-post-button'>Make a Post</button></CustomLink>
                 </ul>
             </nav>
             <nav className={slidebar ? 'menu active' : 'menu'}>
                 <ul className='menu-items' onClick={toggleMenu}>
-                    <button className='cancel-button' style={{ marginLeft:"90%", color:'white'}}>X</button>
+                    <button className='cancel-button' style={{ marginLeft:"85%", color:'white'}}>X</button>
                     <CustomLink to='/'><p style={{color:'white'}}>Homepage</p></CustomLink>
                     <CustomLink to='/report'><p style={{color:'white'}}>Report</p></CustomLink>
                 </ul>
