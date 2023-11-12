@@ -26,7 +26,7 @@ body {
     margin-top: 2vh;
     display: inline-flex;
     list-style-type: none; 
-    position: fixed;
+    position: absolute;
     left: 0;
 }
 

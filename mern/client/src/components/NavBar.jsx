@@ -33,7 +33,7 @@ export default function NavBar () {
                     </div>
                     
                     <CustomLink to='/' ><img src={logo} className="site-title" /></CustomLink>
-                    <CustomLink to='/createpost' style={{position:"fixed", right:"0"}}><button className='make-post-button'>Make a Post</button></CustomLink>
+                    <CustomLink to='/createpost' style={{position:"absolute", right:"0"}}><button className='make-post-button'>Make a Post</button></CustomLink>
                 </ul>
             </nav>
             <nav className={slidebar ? 'menu active' : 'menu'}>
