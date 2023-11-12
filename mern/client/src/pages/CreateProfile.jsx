@@ -1,15 +1,13 @@
 import React, {useState} from "react";
 import { useNavigate } from "react-router";
 
-// Access by changing website address to http://172.31.23.255:3000/newprofile
+// Access by changing website address to http://localhost:3000/newprofile
 
 export default function CreateProfile() {
     const [info, setInfo] = useState({
-        firstName: "",
-        lastName: "",
-        username: "",
+        name: "",
         email: "",
-        phone: ""
+        phone: "",
     })
 
     const navigate = useNavigate();
@@ -28,7 +26,7 @@ export default function CreateProfile() {
         const newUser = { ...info };
 
         // CHANGE THIS
-        await fetch("http://172.31.23.255:5050/users", {
+        await fetch("http://localhost:5050/users", {
             method: "POST",
             headers: {
             "Content-Type": "application/json",
@@ -40,9 +38,8 @@ export default function CreateProfile() {
             return;
         });
 
-        setInfo({ firstName: "",
-            lastName: "",
-            username: "",
+        setInfo({
+            name: "",
             email: "",
             phone: "" });
         navigate("/");
@@ -53,37 +50,17 @@ export default function CreateProfile() {
           <h3>Create Profile</h3>
             <form onSubmit={onSubmit}>
                 <div className="form-group">
-                    <label htmlFor="firstName">First Name </label>
+                    <label htmlFor="name">Name</label>
                     <input
                         type="text"
                         className="form-control"
-                        id="firstName"
-                        value={info.firstName}
-                        onChange={(e) => updateInfo({ firstName: e.target.value })}
+                        id="name"
+                        value={info.name}
+                        onChange={(e) => updateInfo({ name: e.target.value })}
                     />
                 </div>
                 <div className="form-group">
-                    <label htmlFor="lastName">Last Name </label>
-                    <input
-                        type="text"
-                        className="form-control"
-                        id="lastName"
-                        value={info.lastName}
-                        onChange={(e) => updateInfo({ lastName: e.target.value })}
-                    />
-                </div>
-                <div className="form-group">
-                    <label htmlFor="username">Username </label>
-                    <input
-                        type="text"
-                        className="form-control"
-                        id="username"
-                        value={info.username}
-                        onChange={(e) => updateInfo({ username: e.target.value })}
-                    />
-                </div>
-                <div className="form-group">
-                    <label htmlFor="email">Email </label>
+                    <label htmlFor="email">Email</label>
                     <input
                         type="email"
                         placeholder=""
@@ -94,7 +71,7 @@ export default function CreateProfile() {
                     />
                 </div>
                 <div className="form-group">
-                    <label htmlFor="phone">Phone Number </label>
+                    <label htmlFor="phone">Phone Number</label>
                     <input
                         type="tel"
                         className="form-control"

@@ -3,15 +3,15 @@ import { Routes, Route} from 'react-router-dom'
 import "./components/styles.css"
 
 import Home from "./pages/Home";
-import Create from "./pages/CreatePost";
-import Edit from "./pages/EditPost"
+import Create from "./components/create";
+import Edit from "./components/edit"
 import NoPage from './pages/NoPage';
 import NavBar from './components/NavBar';
 import PostDisplay from './pages/PostDisplay';
 import LoginPage from './pages/Login';
 import Profile from './pages/Profile';
 import CreateProfile from './pages/CreateProfile';
-import Settings from './pages/Settings';
+import EditProfile from './components/editProfile';
 
 function App() {
   return (
@@ -25,10 +25,10 @@ function App() {
           <Route path='/createpost' element={<Create />} />
           <Route path='/edit/:id' element={<Edit />} />
           <Route path='/login' element={<LoginPage />} />
-          <Route path='/newprofile' element={<CreateProfile />} />
           <Route path='/postdisplay/:id' element={<PostDisplay />} />
           <Route path='/profile/:id' element={<Profile />} />
-          <Route path='/settings' element={<Settings />} />
+          <Route path='/newprofile' element={<CreateProfile />} />          
+          <Route path='/editprofile/:id' element={<EditProfile />} />
           <Route path='*' element={<NoPage />} />
         </Routes>
       </div>
