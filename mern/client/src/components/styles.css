@@ -26,7 +26,6 @@ body {
     margin-top: 2vh;
     display: inline-flex;
     list-style-type: none; 
-    gap: 0.4vw;
 }
 
 .nav_img {
@@ -37,7 +36,13 @@ body {
 .menu-button {
     background-color: transparent;
     border-color: transparent;
-    margin-top: -3.2vh;
+}
+
+.nav ul {
+    margin: 0;
+    list-style-type: none;   
+    display: flex;
+    gap: 25vw;
 }
 
 .nav a {
@@ -47,26 +52,9 @@ body {
     align-items: center;
 }
 
-.nav ul {
-    margin: 0;
-    list-style-type: none;   
-    display: flex;
-    gap: 2vmax;
-}
-
 .nav li.hover {
     background-color: rgb(197, 168, 4);
 }
-
-.navbar-toggle {
-    background-color: #060b26;
-    width: 100%;
-    height: 80px;
-    display: flex;
-    justify-content: start;
-    align-items: center;
-}
-
 
 .menu {
     background: black;
@@ -79,6 +67,7 @@ body {
     top: 0;
     left: -100%;
     transition: 850ms;
+    z-index: 2;
 }
 
 .menu.active {
@@ -182,11 +171,11 @@ body {
 }
 
 .grid-container {
-    padding-top: 3vh;
+    padding-top: 7vh;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-gap: 3rem; /* Adjust the gap between grid items as needed */
-  }
+}
   
 .grid-item {
     border-radius: 20px;
@@ -204,6 +193,8 @@ body {
 }
 
 .search-area{
+    position: fixed;
+    right: 0;
     display: flex;
     align-items: center;
     gap: 1rem;
@@ -315,6 +306,7 @@ body {
 }
 
 .cancel-button {
+    text-align: center;
     background-color: transparent;
     border-color: transparent;
     font-size: large;

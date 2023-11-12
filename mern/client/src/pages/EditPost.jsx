@@ -30,7 +30,7 @@ export default function EditPost() {
  useEffect(() => {
    async function fetchData() {
      const id = params.id.toString(); // This is undefined
-     const response = await fetch(`http://127.0.0.1:5050/posts/${params.id.toString()}`);
+     const response = await fetch(`http://172.31.23.255:5050/posts/${params.id.toString()}`);
 
      if (!response.ok) {
        const message = `An error has occurred: ${response.statusText}`;
@@ -82,7 +82,7 @@ export default function EditPost() {
    };
 
    // This will send a post request to update the data in the database.
-   await fetch(`http://127.0.0.1:5050/posts/${params.id}`, {
+   await fetch(`http://172.31.23.255:5050/posts/${params.id}`, {
      method: "PATCH",
      body: JSON.stringify(editedPost),
      headers: {

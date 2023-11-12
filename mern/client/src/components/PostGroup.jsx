@@ -28,7 +28,7 @@ export default function PostGroup() {
     // This method fetches the records from the database.
     useEffect(() => {
     async function getRecords() {
-        const response = await fetch(`http://127.0.0.1:5050/posts/`);
+        const response = await fetch(`http://172.31.23.255:5050/posts/`);
 
         if (!response.ok) {
         const message = `An error occurred: ${response.statusText}`;
@@ -52,7 +52,7 @@ export default function PostGroup() {
             <div className="search-area">
                     <LocationSelection />
                     <SearchBar key="SearchBar"/>
-                </div>
+            </div>
             <div className="grid-container">
                 {/* If records are empty, display empty message */}
                 {posts.length === 0 && <h1>No posts are found</h1>}
@@ -129,29 +129,28 @@ export default function PostGroup() {
     // Filter functionality
     function filterPosts() {
         let tempRecords = records;
+        let changeMade = false;
         if(filters.maxPrice !== "") {
             tempRecords = tempRecords.filter((record) => Number(record.price) <= Number(filters.maxPrice))
-            console.log("MaxPrice", tempRecords)
+            changeMade = true;
         }
         
         if(filters.minPrice !== "") {
             tempRecords = tempRecords.filter((record) => Number(record.price) >= Number(filters.minPrice))
-            console.log("MixPrice", tempRecords)
+            changeMade = true;
         }
         
         if(filters.start !== "") {
             tempRecords = tempRecords.filter((record) => dateIsGreater(filters.start, record.start))
-            console.log("Start", tempRecords)
+            changeMade = true;
         }
         
         if(filters.end !== "") {
             tempRecords = tempRecords.filter((record) => dateIsGreater(record.end, filters.end))
-            console.log("End", tempRecords)
+            changeMade = true;        
         }
-        
         setFRecords(tempRecords);
-        setFiltered(true);
-        console.log("Filter results" , fRecords)
+        setFiltered(changeMade);
     }
 
     function Filter({ isOpen, onClose}) {
@@ -175,7 +174,7 @@ export default function PostGroup() {
                     {/* The close button */}
                     <button onClick={onClose}
                     className="cancel-button"
-                    style={{paddingLeft:"99%"}}>
+                    style={{marginLeft:"99%"}}>
                         X</button>
                     {/* Price range input */}
                     <div className="filter-content-price">

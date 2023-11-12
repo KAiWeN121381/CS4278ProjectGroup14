@@ -21,9 +21,15 @@ export default function NavBar () {
                 {/* Temporary links to pages. Replace with the actual corresponding links when pages are created. */}
                 <ul>
                     <div className='nav_imgs'>
-                        <button className="menu-button" onClick={toggleMenu}><img src={menu} className='nav_img'/></button> 
-                        <CustomLink to='/profile/123'><img src={profile} className='nav_img'/></CustomLink>
-                        <CustomLink to='/settings'><img src={setting} className='nav_img'/></CustomLink>
+                        <CustomLink>
+                            <button className="menu-button" onClick={toggleMenu}><img src={menu} className='nav_img'/></button> 
+                        </CustomLink>
+                        <CustomLink to='/profile/123'>
+                            <button className="menu-button"><img src={profile} className='nav_img'/></button>
+                        </CustomLink>
+                        <CustomLink to='/settings'>
+                            <button className="menu-button"><img src={setting} className='nav_img'/></button>
+                        </CustomLink>
                     </div>
                     
                     <CustomLink to='/' ><img src={logo} className="site-title" /></CustomLink>
@@ -31,10 +37,8 @@ export default function NavBar () {
                 </ul>
             </nav>
             <nav className={slidebar ? 'menu active' : 'menu'}>
-                <ul className='menu-items'>
-                    <button className='cancel-button' 
-                        style={{paddingLeft:"90%", color:'white'}}
-                        onClick={toggleMenu}>X</button>
+                <ul className='menu-items' onClick={toggleMenu}>
+                    <button className='cancel-button' style={{ marginLeft:"90%", color:'white'}}>X</button>
                     <CustomLink to='/'><p style={{color:'white'}}>Homepage</p></CustomLink>
                     <CustomLink to='/report'><p style={{color:'white'}}>Report</p></CustomLink>
                 </ul>
