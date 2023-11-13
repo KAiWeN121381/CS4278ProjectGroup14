@@ -202,8 +202,9 @@ body {
 }
 
 .post-preview {
-    height: 80%;
+    height: 100%;
     width: 100%;
+    z-index: 1;
 }
 
 .post-preview img{
@@ -214,9 +215,8 @@ body {
 
 .text-overlay {
     position: relative;
-    top: 100%;
-    left: 0%;
-    transform: translate(0%, -100%);
+    bottom: 8px;
+    left: 16px;
     color: black;
 }
 
@@ -247,7 +247,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 3;
+    z-index: 10;
 }
 
 .filter-content {
@@ -286,7 +286,6 @@ body {
     height: 5vh;
     outline: none;
     margin-right: 3vw;
-    margin-top: 1vh;
     font-size: 2vh;
 }
 .general-button {
@@ -302,7 +301,7 @@ body {
     margin: 8px 0;
 }
 
-.custom-link-2 {
+.custom-link {
     list-style-type: none;
 }
 

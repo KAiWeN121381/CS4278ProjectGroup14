@@ -27,13 +27,13 @@ export default function NavBar () {
                         <CustomLink to='/profile/123'>
                             <button className="menu-button"><img src={profile} className='nav_img'/></button>
                         </CustomLink>
-                        <CustomLink to='/settings'>
+                        <CustomLink to='/login'>
                             <button className="menu-button"><img src={setting} className='nav_img'/></button>
                         </CustomLink>
                     </div>
                     
                     <CustomLink to='/' ><img src={logo} className="site-title" /></CustomLink>
-                    <CustomLink to='/createpost' style={{position:"absolute", right:"0"}}><button className='make-post-button'>Make a Post</button></CustomLink>
+                    <CustomLink to='/createpost'><button className='make-post-button' style={{position:"absolute", right:"0", marginTop:"7vh"}}>Make a Post</button></CustomLink>
                 </ul>
             </nav>
             <nav className={slidebar ? 'menu active' : 'menu'}>

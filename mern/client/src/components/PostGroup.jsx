@@ -5,6 +5,7 @@ import { FiSearch } from 'react-icons/fi'
 import filter from '../assets/filter.png'
 import pricetag from "../assets/price-tag.png"
 import calendar from "../assets/calendar.png"
+import { Link } from "react-router-dom";
 
 // The component for displaying a preview of posts
 // TO-DO: Get search and filter results

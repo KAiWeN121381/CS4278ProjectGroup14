@@ -8,7 +8,7 @@ export default function CustomLink ({to, children, ...props}) {
 
     return (
         <li className={isActive ? "" : "custom-link"}>
-            <Link to={to} {...props}>
+            <Link to={to} {...props} style={{textDecoration:"none"}}>
                 {children}
             </Link>
         </li>
