@@ -130,6 +130,8 @@ async function getUser(){
 
     getRecords();
     getUser();
+    let tempRecords = records.filter((record) => record.title === form.title);
+    
     let userwithpost = {
       name: user.name,
       email: user.email,
@@ -137,7 +139,6 @@ async function getUser(){
       post: String(tempRecords[0]._id),
     }
     
-    let tempRecords = records.filter((record) => record.title === form.title);
     if(tempRecords.length !== -1){
 
       // This will send a post request to update the data in the database.

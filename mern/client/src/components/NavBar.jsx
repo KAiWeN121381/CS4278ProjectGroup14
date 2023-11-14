@@ -5,7 +5,7 @@ import setting from '../assets/navbar_setting.png'
 
 import CustomLink from "./CustomLink"
 
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 // The navigation bar at the top of the page.
 // Contains links to different pages for navigation
@@ -13,9 +13,16 @@ import React, { useEffect, useState } from 'react';
 export default function NavBar () {
     const[slidebar, setSlidebar] = useState(false);
     const[linkname, setLinkname] = useState("/login");
+    const[user, setUser] = useState("");
 
     const toggleMenu = () => setSlidebar(!slidebar);
 
+    useEffect(() => {
+
+        setUser(String(global.USERID))
+        console.log(global.USERID);
+        return;
+    }, [global.USERID])
     console.log(global.USERID);
     useEffect(() => {
         setLinkname(global.USERID ? `/profile/${global.USERID}` : '/login');

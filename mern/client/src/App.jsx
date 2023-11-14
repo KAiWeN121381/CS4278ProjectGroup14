@@ -28,7 +28,7 @@ function App() {
           <Route path='/login' element={<LoginPage />} />
           <Route path='/postdisplay/:id' element={<PostDisplay />} />
           <Route path='/profile/:id' element={<Profile />} />
-          <Route path='/newprofile' element={<CreateProfile />} />          
+          <Route path='/createprofile' element={<CreateProfile />} />          
           <Route path='/editprofile/:id' element={<EditProfile />} />          
           <Route path='/settings' element={<Settings />} />
           <Route path='*' element={<NoPage />} />

@@ -15,7 +15,7 @@ export default function Profile() {
     post: "",
     records: [],
   });
-  const [postlinkname, setPostlinkname] = useState("")
+  const [postlinkname, setPostlinkname] = useState("");
   const [post, setPost] = useState({
     username: "", // The username / ID
     title: "",
@@ -41,6 +41,7 @@ export default function Profile() {
   const params = useParams();
   const navigate = useNavigate();
   let linkname = `/editprofile/${params.id.toString()}`;
+  console.log("In Profile");
 
   useEffect(() => {
     async function fetchData() {
@@ -108,7 +109,7 @@ export default function Profile() {
       }
 
       setPost(record);
-      setPostlinkname(`/editpost/${id}`)
+      setPostlinkname(`/editpost/${form.post}`);
     }
 
     if (form.post !== "") {
