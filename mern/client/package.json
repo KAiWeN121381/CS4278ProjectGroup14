@@ -6,17 +6,14 @@
     "@react-google-maps/api": "^2.19.2",
     "@react-oauth/google": "^0.11.1",
     "@testing-library/jest-dom": "^5.11.4",
-    "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
     "bootstrap": "^4.6.0",
     "i": "^0.3.7",
-    "jest": "^27.5.1",
     "jwt-decode": "^4.0.0",
     "npm": "^10.2.3",
     "react": "^18.0.2",
     "react-dom": "^18.2.0",
     "react-icons": "^4.11.0",
-    "react-router-dom": "^6.14.1",
     "react-scripts": "^5.0.1",
     "reactjs-popup": "^2.0.6",
     "web-vitals": "^3.4.0"
@@ -50,7 +47,10 @@
     "@babel/plugin-syntax-jsx": "^7.23.3",
     "@babel/preset-env": "^7.23.2",
     "@babel/preset-react": "^7.23.3",
+    "@testing-library/react": "^14.1.0",
     "babel-jest": "^29.7.0",
-    "jsdom": "^22.1.0"
+    "jest": "^27.5.1",
+    "jsdom": "^22.1.0",
+    "react-router-dom": "^6.18.0"
   }
 }

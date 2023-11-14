@@ -116,11 +116,16 @@ export default function PostGroup() {
             placeholder="Search for housing"
             onChange={handleChange}
           />
-          <button type="submit" className="filter-button">
+          <button
+            data-testid="search-button"
+            type="submit"
+            className="filter-button"
+          >
             <FiSearch style={{ height: "1.5rem", width: "1.5rem" }} />
           </button>
         </form>
         <button
+          data-testid="Filter"
           className="filter-button"
           onClick={isOpen ? closeFilter : openFilter}
         >
@@ -211,6 +216,7 @@ export default function PostGroup() {
                 <p>Minimum: </p>
                 <img src={pricetag} />
                 <input
+                  data-testid="Minimum_price"
                   autoFocus={lastInput === "minPrice" ? true : false}
                   key="minPrice"
                   type="text"
@@ -230,6 +236,7 @@ export default function PostGroup() {
                 <p>Maximum: </p>
                 <img src={pricetag} />
                 <input
+                  data-testid="Maximum_price"
                   autoFocus={lastInput === "maxPrice" ? true : false}
                   key="maxPrice"
                   type="text"
@@ -259,6 +266,7 @@ export default function PostGroup() {
                 <p>Check-in: </p>
                 <img src={calendar} style={{ height: "4vh" }} />
                 <input
+                  data-testid="Minimum_date"
                   autoFocus={lastInput === "start" ? true : false}
                   key="start"
                   type="date"
@@ -277,6 +285,7 @@ export default function PostGroup() {
                 <p>Check-out: </p>
                 <img src={calendar} style={{ height: "4vh" }} />
                 <input
+                  data-testid="Maximum_date"
                   autoFocus={lastInput === "end" ? true : false}
                   key="end"
                   type="date"
@@ -294,7 +303,11 @@ export default function PostGroup() {
             </div>
           </div>
           {/* The apply button */}
-          <button type="submit" className="apply-filter-button">
+          <button
+            data-testid="apply"
+            type="submit"
+            className="apply-filter-button"
+          >
             Apply
           </button>
         </form>

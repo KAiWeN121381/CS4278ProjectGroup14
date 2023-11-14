@@ -1,61 +1,82 @@
-import logo from '../assets/logo.png'
-import menu from '../assets/navbar_menu.png'
-import profile from '../assets/navbar_profileicon.png'
-import setting from '../assets/navbar_setting.png'
+import logo from "../assets/logo.png";
+import menu from "../assets/navbar_menu.png";
+import profile from "../assets/navbar_profileicon.png";
+import setting from "../assets/navbar_setting.png";
 
-import CustomLink from "./CustomLink"
+import CustomLink from "./CustomLink";
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from "react";
 
 // The navigation bar at the top of the page.
 // Contains links to different pages for navigation
 // TO-DO: Create and update links to pages
-export default function NavBar () {
-    const[slidebar, setSlidebar] = useState(false);
-    const[linkname, setLinkname] = useState("/login");
-    const[user, setUser] = useState("");
+export default function NavBar() {
+  const [slidebar, setSlidebar] = useState(false);
 
-    const toggleMenu = () => setSlidebar(!slidebar);
+  const toggleMenu = () => setSlidebar(!slidebar);
 
-    useEffect(() => {
+  console.log(global.USERID, "gfufgcufycuyfu");
 
-        setUser(String(global.USERID))
-        console.log(global.USERID);
-        return;
-    }, [global.USERID])
-    console.log(global.USERID);
-    useEffect(() => {
-        setLinkname(global.USERID ? `/profile/${global.USERID}` : '/login');
-    },[global.USERID]);
+  let linkname = `/login`;
+  if (global.USERID !== "") {
+    linkname = `/profile/${global.USERID}`;
+    console.log("not empty");
+  }
+  //global.USERID ? `/login` : `/profile/${global.USERID}`
 
-    return (
-        <>
-            <nav className="nav">
-                {/* Temporary links to pages. Replace with the actual corresponding links when pages are created. */}
-                <ul>
-                    <div className='nav_imgs'>
-                        <CustomLink>
-                            <button className="menu-button" onClick={toggleMenu}><img src={menu} className='nav_img'/></button> 
-                        </CustomLink>
-                        <CustomLink to={linkname}>
-                            <button className="menu-button"><img src={profile} className='nav_img'/></button>
-                        </CustomLink>
-                        <CustomLink to='/settings'>
-                            <button className="menu-button"><img src={setting} className='nav_img'/></button>
-                        </CustomLink>
-                    </div>
-                    
-                    <CustomLink to='/' ><img src={logo} className="site-title" /></CustomLink>
-                    <CustomLink to='/createpost'><button className='make-post-button' style={{position:"absolute", right:"0", marginTop:"7vh"}}>Make a Post</button></CustomLink>
-                </ul>
-            </nav>
-            <nav className={slidebar ? 'menu active' : 'menu'}>
-                <ul className='menu-items' onClick={toggleMenu}>
-                    <button className='cancel-button' style={{ marginLeft:"85%", color:'white'}}>X</button>
-                    <CustomLink to='/'><p style={{color:'white'}}>Homepage</p></CustomLink>
-                    <CustomLink to='/report'><p style={{color:'white'}}>Report</p></CustomLink>
-                </ul>
-            </nav>
-        </> 
-    )    
+  return (
+    <>
+      <nav className="nav">
+        {/* Temporary links to pages. Replace with the actual corresponding links when pages are created. */}
+        <ul>
+          <div className="nav_imgs">
+            <CustomLink>
+              <button className="menu-button" onClick={toggleMenu}>
+                <img src={menu} className="nav_img" />
+              </button>
+            </CustomLink>
+            <CustomLink to="/profile/123">
+              <button data-testid="menu" className="menu-button">
+                <img src={profile} className="nav_img" />
+              </button>
+            </CustomLink>
+            <CustomLink to="/login">
+              <button className="menu-button">
+                <img src={setting} className="nav_img" />
+              </button>
+            </CustomLink>
+          </div>
+
+          <CustomLink to="/">
+            <img src={logo} className="site-title" />
+          </CustomLink>
+          <CustomLink to="/createpost">
+            <button
+              className="make-post-button"
+              style={{ position: "absolute", right: "0", marginTop: "7vh" }}
+            >
+              Make a Post
+            </button>
+          </CustomLink>
+        </ul>
+      </nav>
+      <nav className={slidebar ? "menu active" : "menu"}>
+        <ul className="menu-items" onClick={toggleMenu}>
+          <button
+            data-testid="cancel"
+            className="cancel-button"
+            style={{ marginLeft: "85%", color: "white" }}
+          >
+            X
+          </button>
+          <CustomLink to="/">
+            <p style={{ color: "white" }}>Homepage</p>
+          </CustomLink>
+          <CustomLink to="/report">
+            <p style={{ color: "white" }}>Report</p>
+          </CustomLink>
+        </ul>
+      </nav>
+    </>
+  );
 }

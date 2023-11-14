@@ -26,10 +26,10 @@ export default function CreatePost() {
     name: "",
     email: "",
     phone: "",
-  })
-  const [records, setRecords] = useState([])
+  });
+  const [records, setRecords] = useState([]);
   const navigate = useNavigate();
-  if(global.USERID === ""){
+  if (global.USERID === "") {
     navigate("/createprofile");
   }
 
@@ -39,7 +39,7 @@ export default function CreatePost() {
       return { ...prev, ...value };
     });
   }
-/*
+  /*
   async function setPoster(){
     
     useEffect(() => {
@@ -83,32 +83,31 @@ export default function CreatePost() {
     });
     }
   }*/
-async function getUser(){
-  const response = await fetch(
-    `http://127.0.0.1:5050/users/${global.USERID}`
-  );
+  async function getUser() {
+    const response = await fetch(
+      `http://127.0.0.1:5050/users/${global.USERID}`
+    );
 
-  const user = {
-    name: response.name,
-    email: response.email,
-    phone: response.phone,
-  };
-  setUser(user);
-}
-  
+    const user = {
+      name: response.name,
+      email: response.email,
+      phone: response.phone,
+    };
+    setUser(user);
+  }
 
-    async function getRecords() {
-      const response = await fetch(`http://127.0.0.1:5050/posts/`);
+  async function getRecords() {
+    const response = await fetch(`http://127.0.0.1:5050/posts/`);
 
-      if (!response.ok) {
-        const message = `An error occurred: ${response.statusText}`;
-        window.alert(message);
-        return;
-      }
-
-      const records = await response.json();
-      setRecords(records);
+    if (!response.ok) {
+      const message = `An error occurred: ${response.statusText}`;
+      window.alert(message);
+      return;
     }
+
+    const records = await response.json();
+    setRecords(records);
+  }
 
   // This function will handle the submission.
   async function onSubmit(e) {
@@ -130,25 +129,23 @@ async function getUser(){
 
     getRecords();
     getUser();
-    let tempRecords = records.filter((record) => record.title === form.title);
-    
     let userwithpost = {
       name: user.name,
       email: user.email,
       phone: user.phone,
       post: String(tempRecords[0]._id),
-    }
-    
-    if(tempRecords.length !== -1){
+    };
 
+    let tempRecords = records.filter((record) => record.title === form.title);
+    if (tempRecords.length !== -1) {
       // This will send a post request to update the data in the database.
-    await fetch(`http://127.0.0.1:5050/users/${global.USERID}`, {
-      method: "PATCH",
-      body: JSON.stringify(userwithpost),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+      await fetch(`http://127.0.0.1:5050/users/${global.USERID}`, {
+        method: "PATCH",
+        body: JSON.stringify(userwithpost),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
     }
 
     setForm({
@@ -176,6 +173,7 @@ async function getUser(){
         <div className="form-group">
           <label htmlFor="username">Name </label>
           <input
+            data-testid="Name-input"
             type="text"
             className="form-control"
             id="username"
@@ -186,6 +184,7 @@ async function getUser(){
         <div className="form-group">
           <label htmlFor="title">Title </label>
           <input
+            data-testid="Title-input"
             type="text"
             className="form-control"
             id="title"
@@ -236,6 +235,7 @@ async function getUser(){
         <div className="form-group">
           <label htmlFor="distance">Distance </label>
           <input
+            data-testid="dist-input"
             type="text"
             className="form-control"
             id="distance"
@@ -267,6 +267,7 @@ async function getUser(){
         <div className="form-group">
           <label htmlFor="gym">gym</label>
           <input
+            data-testid="gym-input"
             type="checkbox"
             className="form-control"
             id="gym"
@@ -296,6 +297,7 @@ async function getUser(){
         </div>
         <div className="form-group">
           <input
+            data-testid="submit"
             type="submit"
             value="Create post"
             className="btn btn-primary"
