@@ -13,7 +13,7 @@ export default function CreateProfile() {
 
   useEffect(() => {
       async function getUsers() {
-          const response = await fetch(`http://127.0.0.1:5050:5050/users/`);
+          const response = await fetch(`http://127.0.0.1:5050/users/`);
   
           if (!response.ok) {
           const message = `An error occurred: ${response.statusText}`;
@@ -45,12 +45,7 @@ export default function CreateProfile() {
     // When a post request is sent to the create url, we'll add a new record to the database.
     const newUser = { ...info };
 
-<<<<<<< HEAD
     await fetch("http://127.0.0.1:5050/users", {
-=======
-    // CHANGE THIS
-    await fetch("http://localhost:5050/users", {
->>>>>>> f1443eef1d6d853ede61d4898c098f80d48a9891
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -84,7 +79,7 @@ export default function CreateProfile() {
 
     let tempUsers = users.filter((user) => user.email === info.email)
     if(tempUsers.length !== -1){
-      global.USERID = tempUsers[0].id;
+      global.USERID = String(tempUsers[0]._id);
     }
 
     navigate("/");

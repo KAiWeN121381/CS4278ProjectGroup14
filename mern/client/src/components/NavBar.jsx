@@ -16,13 +16,13 @@ export default function NavBar () {
     const toggleMenu = () => setSlidebar(!slidebar);
 
     console.log(global.USERID, "gfufgcufycuyfu");
-    
+    /*
     let linkname = `/login`
     if(global.USERID !== ""){
         linkname = `/profile/${global.USERID}`;
         console.log("not empty");
     }
-    //global.USERID ? `/login` : `/profile/${global.USERID}`
+    */
 
     return (
         <>
@@ -33,7 +33,7 @@ export default function NavBar () {
                         <CustomLink>
                             <button className="menu-button" onClick={toggleMenu}><img src={menu} className='nav_img'/></button> 
                         </CustomLink>
-                        <CustomLink to={linkname}>
+                        <CustomLink to={global.USERID === "" ? `/login` : `/profile/${global.USERID}`}>
                             <button className="menu-button"><img src={profile} className='nav_img'/></button>
                         </CustomLink>
                         <CustomLink to='/settings'>

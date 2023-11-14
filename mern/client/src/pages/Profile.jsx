@@ -15,7 +15,7 @@ export default function Profile() {
     post: "",
     records: [],
   });
-  const [postlinkname, setPostlinkname] = useState("")
+  const [postlinkname, setPostlinkname] = useState("");
   const [post, setPost] = useState({
     username: "", // The username / ID
     title: "",
@@ -41,12 +41,13 @@ export default function Profile() {
   const params = useParams();
   const navigate = useNavigate();
   let linkname = `/editprofile/${params.id.toString()}`;
+  console.log("In Profile");
 
   useEffect(() => {
     async function fetchData() {
       const id = params.id.toString();
       const response = await fetch(
-        `http://localhost:5050/users/${params.id.toString()}`
+        `http://127.0.0.1:5050/users/${params.id.toString()}`
       );
 
       if (!response.ok) {
@@ -73,7 +74,7 @@ export default function Profile() {
   useEffect(() => {
     async function fetchData() {
       const id = form.post;
-      const response = await fetch(`http://localhost:5050/posts/${form.post}`);
+      const response = await fetch(`http://127.0.0.1:5050/posts/${form.post}`);
 
       if (!response.ok) {
         const message = `An error has occurred: ${response.statusText}`;
@@ -103,7 +104,7 @@ export default function Profile() {
       }
 
       setPost(record);
-      setPostlinkname(`/editpost/${id}`)
+      setPostlinkname(`/editpost/${form.post}`);
     }
 
     if (form.post !== "") {

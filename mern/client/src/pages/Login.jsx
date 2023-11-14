@@ -42,11 +42,11 @@ export default function LoginPage() {
                     global.USERID = String(tempUsers[0]._id);
                     console.log(decodedResponse.email);
                     console.log(global.USERID, "asdfasdfasdfad");
+                    navigate(`/`); // Returns to main page
                 }
                 else{
                     navigate(`/createprofile`)
                 }
-                navigate(`/`); // Returns to main page
             }}
             onError={() => {
                 console.log('Login Failed');

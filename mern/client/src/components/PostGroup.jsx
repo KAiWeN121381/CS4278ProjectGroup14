@@ -5,7 +5,6 @@ import { FiSearch } from "react-icons/fi";
 import filter from "../assets/filter.png";
 import pricetag from "../assets/price-tag.png";
 import calendar from "../assets/calendar.png";
-import { Link } from "react-router-dom";
 
 // The component for displaying a preview of posts
 // TO-DO: Get search and filter results
@@ -28,7 +27,7 @@ export default function PostGroup() {
   // This method fetches the records from the database.
   useEffect(() => {
     async function getRecords() {
-      const response = await fetch(`http://localhost:5050/posts/`);
+      const response = await fetch(`http://127.0.0.1:5050/posts/`);
 
       if (!response.ok) {
         const message = `An error occurred: ${response.statusText}`;
@@ -73,7 +72,7 @@ export default function PostGroup() {
 
   // Search functionality
   function searchRecords(searchKeyword) {
-    if (searchKeyword != "") {
+    if (searchKeyword !== "") {
       searchKeyword = searchKeyword.toLowerCase();
       const newRecords = records.filter(
         (record) =>
