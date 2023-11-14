@@ -22,7 +22,16 @@ export default function CreatePost() {
 
     description: "",
   });
+  const [user, setUser] = useState({
+    name: "",
+    email: "",
+    phone: "",
+  })
+  const [records, setRecords] = useState([])
   const navigate = useNavigate();
+  if(global.USERID === ""){
+    navigate("/createprofile");
+  }
 
   // These methods will update the state properties.
   function updateForm(value) {
@@ -30,6 +39,76 @@ export default function CreatePost() {
       return { ...prev, ...value };
     });
   }
+/*
+  async function setPoster(){
+    
+    useEffect(() => {
+      async function getRecords() {
+        const response = await fetch(`http://127.0.0.1:5050/posts/`);
+  
+        if (!response.ok) {
+          const message = `An error occurred: ${response.statusText}`;
+          window.alert(message);
+          return;
+        }
+  
+        const records = await response.json();
+        setRecords(records);
+      }
+  
+      getRecords();
+  
+      return;
+    }, [records.length]);
+
+    let tempRecords = records.filter((record) => record.title === form.title);
+    if(tempRecords.length !== -1){
+      const response = await fetch(
+        `http://127.0.0.1:5050/users/${global.USERID}`
+      );
+      const userWithPost = {
+        name: response.name,
+        email: response.email,
+        phone: response.phone,
+        post: tempRecords[0].id,
+      };
+
+      // This will send a post request to update the data in the database.
+    await fetch(`http://127.0.0.1:5050/users/${global.USERID}`, {
+      method: "PATCH",
+      body: JSON.stringify(userWithPost),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    }
+  }*/
+async function getUser(){
+  const response = await fetch(
+    `http://127.0.0.1:5050/users/${global.USERID}`
+  );
+
+  const user = {
+    name: response.name,
+    email: response.email,
+    phone: response.phone,
+  };
+  setUser(user);
+}
+  
+
+    async function getRecords() {
+      const response = await fetch(`http://127.0.0.1:5050/posts/`);
+
+      if (!response.ok) {
+        const message = `An error occurred: ${response.statusText}`;
+        window.alert(message);
+        return;
+      }
+
+      const records = await response.json();
+      setRecords(records);
+    }
 
   // This function will handle the submission.
   async function onSubmit(e) {
@@ -48,6 +127,28 @@ export default function CreatePost() {
       window.alert(error);
       return;
     });
+
+    getRecords();
+    getUser();
+    let userwithpost = {
+      name: user.name,
+      email: user.email,
+      phone: user.phone,
+      post: String(tempRecords[0]._id),
+    }
+    
+    let tempRecords = records.filter((record) => record.title === form.title);
+    if(tempRecords.length !== -1){
+
+      // This will send a post request to update the data in the database.
+    await fetch(`http://127.0.0.1:5050/users/${global.USERID}`, {
+      method: "PATCH",
+      body: JSON.stringify(userwithpost),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    }
 
     setForm({
       username: "",

@@ -15,6 +15,7 @@ export default function Profile() {
     post: "",
     records: [],
   });
+  const [postlinkname, setPostlinkname] = useState("")
   const [post, setPost] = useState({
     username: "", // The username / ID
     title: "",
@@ -94,14 +95,15 @@ export default function Profile() {
         return;
       }
 
-      const post = await response.json();
-      if (!post) {
+      const record = await response.json();
+      if (!record) {
         window.alert(`Post with id ${id} not found`);
         navigate("/");
         return;
       }
 
-      setPost(post);
+      setPost(record);
+      setPostlinkname(`/editpost/${id}`)
     }
 
     if (form.post !== "") {
@@ -123,12 +125,15 @@ export default function Profile() {
       </div>
       <div>
         <h2>Your Posts</h2>
-        {form.post !== "" && <PostPreview post={post} />}
         {form.post === "" && (
           <CustomLink to="/createpost">
             <button className="make-post-button">Make a Post</button>
           </CustomLink>
         )}
+        {form.post !== "" && (<PostPreview post={post} />)
+        (<CustomLink to={postlinkname}><button className="edit-post-button">Edit Post</button></CustomLink>)
+        }
+
       </div>
     </div>
   );
