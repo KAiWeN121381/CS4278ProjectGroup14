@@ -24,7 +24,7 @@ function App() {
           <Route index element={<Home />} />
           <Route path='/home' element={<Home />} />
           <Route path='/createpost' element={<Create />} />
-          <Route path='/edit/:id' element={<Edit />} />
+          <Route path='/editpost/:id' element={<Edit />} />
           <Route path='/login' element={<LoginPage />} />
           <Route path='/postdisplay/:id' element={<PostDisplay />} />
           <Route path='/profile/:id' element={<Profile />} />

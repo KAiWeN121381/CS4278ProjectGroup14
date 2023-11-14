@@ -6,6 +6,8 @@ import React, { useEffect, useState } from "react";
 var userID = "";
 global.USERID = userID;
 
+localStorage.setItem("USERID", "");
+
 export default function LoginPage() {
     const [users, setUsers] = useState([]);
     

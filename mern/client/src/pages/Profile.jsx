@@ -44,6 +44,7 @@ export default function Profile() {
 
   useEffect(() => {
     async function fetchData() {
+      console.log("User first");
       const id = params.id.toString();
       console.log(params.id)
       const response = await fetch(
@@ -53,6 +54,7 @@ export default function Profile() {
       if (!response.ok) {
         const message = `An error has occurred: ${response.statusText}`;
         window.alert(message);
+        console.log("error 1");
         return;
       }
 
@@ -73,11 +75,13 @@ export default function Profile() {
 
   useEffect(() => {
     async function fetchData() {
+      console.log("post first");
       const id = form.post;
       const response = await fetch(`http://127.0.0.1:5050/posts/${form.post}`);
 
       if (!response.ok) {
         const message = `An error has occurred: ${response.statusText}`;
+        console.log("error 2");
         setForm({
           username: "",
           title: "",
@@ -131,9 +135,10 @@ export default function Profile() {
             <button className="make-post-button">Make a Post</button>
           </CustomLink>
         )}
-        {form.post !== "" && <div>
+        {form.post !== "" && 
+        <div>
           <PostPreview post={post} />
-          <CustomLink to={postlinkname}><button className="edit-post-button">Edit Post</button></CustomLink>
+          <CustomLink to={postlinkname}><button className="make-post-button">Edit Post</button></CustomLink>
         </div>
         }
 
