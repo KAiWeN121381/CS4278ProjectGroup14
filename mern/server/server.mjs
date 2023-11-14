@@ -6,7 +6,7 @@ import records from "./routes/record.mjs";
 const PORT = 5050;
 const app = express();
 
-const allowedOrigins = ["http://52.15.93.98/"];
+const allowedOrigins = ["http://52.15.93.98"];
 app.use(
   cors({
     origin: function (origin, callback) {
