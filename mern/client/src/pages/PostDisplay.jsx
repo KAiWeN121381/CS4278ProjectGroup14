@@ -36,7 +36,7 @@ export default function PostDisplay() {
     async function fetchData() {
       const id = params.id.toString();
       const response = await fetch(
-        `http://localhost:5050/posts/${params.id.toString()}`
+        `http://127.0.0.1:5050/posts/${params.id.toString()}`
       );
 
       if (!response.ok) {

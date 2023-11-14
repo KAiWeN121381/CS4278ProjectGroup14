@@ -71,7 +71,7 @@ describe("Home Component", () => {
     // Wait for the API request to be resolved
     await act(async () => {
       await waitFor(() => {
-        expect(fetch).toHaveBeenCalledWith("http://localhost:3000/posts/");
+        expect(fetch).toHaveBeenCalledWith("http://127.0.0.1:3000/posts/");
       });
     });
   });
@@ -98,7 +98,7 @@ describe("Home Component", () => {
 
     await act(async () => {
       await waitFor(() => {
-        expect(fetch).toHaveBeenCalledWith("http://localhost:3000/posts/");
+        expect(fetch).toHaveBeenCalledWith("http://127.0.0.1:3000/posts/");
       });
     });
   });
