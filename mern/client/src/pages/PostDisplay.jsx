@@ -36,7 +36,7 @@ export default function PostDisplay() {
     async function fetchData() {
       const id = params.id.toString();
       const response = await fetch(
-        `http://127.0.0.1:5050/posts/${params.id.toString()}`
+        `http://localhost:5050/posts/${params.id.toString()}`
       );
 
       if (!response.ok) {
@@ -102,8 +102,10 @@ export default function PostDisplay() {
               <div>
                 <h5>Facilities: </h5>
               </div>
-              <h5>Location: </h5>
-              <MapComponent />
+              <div style={{ height: "10rem" }}>
+                <h5>Location: </h5>
+                <MapComponent />
+              </div>
             </div>
             <div className="post-details-wrapper">
               <button className="request-sublet-button">Request Sublet</button>

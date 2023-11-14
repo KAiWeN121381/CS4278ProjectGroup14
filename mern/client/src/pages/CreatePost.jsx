@@ -117,7 +117,7 @@ async function getUser(){
     // When a post request is sent to the create url, we'll add a new record to the database.
     const newPost = { ...form };
 
-    await fetch("http://127.0.0.1:5050/posts", {
+    await fetch("http://localhost:5050/posts", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

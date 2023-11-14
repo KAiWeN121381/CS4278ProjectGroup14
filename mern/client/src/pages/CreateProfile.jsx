@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router";
 
-// Access by changing website address to http://127.0.0.1:3000/newprofile
+// Access by changing website address to http://localhost:3000/newprofile
 
 export default function CreateProfile() {
   const [info, setInfo] = useState({
@@ -45,7 +45,12 @@ export default function CreateProfile() {
     // When a post request is sent to the create url, we'll add a new record to the database.
     const newUser = { ...info };
 
+<<<<<<< HEAD
     await fetch("http://127.0.0.1:5050/users", {
+=======
+    // CHANGE THIS
+    await fetch("http://localhost:5050/users", {
+>>>>>>> f1443eef1d6d853ede61d4898c098f80d48a9891
       method: "POST",
       headers: {
         "Content-Type": "application/json",
