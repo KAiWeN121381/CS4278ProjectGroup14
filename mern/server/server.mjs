@@ -6,7 +6,7 @@ import records from "./routes/record.mjs";
 const PORT = 5050;
 const app = express();
 
-app.use(cors({ origin: '*' }));
+app.use(cors({ origin: "*" }));
 
 app.use(express.json());
 

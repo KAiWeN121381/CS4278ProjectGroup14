@@ -45,7 +45,7 @@ export default function Profile() {
     async function fetchData() {
       const id = params.id.toString();
       const response = await fetch(
-        `http://127.0.0.1:5050/users/${params.id.toString()}`
+        `http://localhost:5050/users/${params.id.toString()}`
       );
 
       if (!response.ok) {
@@ -72,7 +72,7 @@ export default function Profile() {
   useEffect(() => {
     async function fetchData() {
       const id = form.post;
-      const response = await fetch(`http://127.0.0.1:5050/posts/${form.post}`);
+      const response = await fetch(`http://localhost:5050/posts/${form.post}`);
 
       if (!response.ok) {
         const message = `An error has occurred: ${response.statusText}`;
