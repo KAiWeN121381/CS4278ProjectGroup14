@@ -5,24 +5,24 @@ import setting from '../assets/navbar_setting.png'
 
 import CustomLink from "./CustomLink"
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 // The navigation bar at the top of the page.
 // Contains links to different pages for navigation
 // TO-DO: Create and update links to pages
 export default function NavBar () {
     const[slidebar, setSlidebar] = useState(false);
+    const[user, setUser] = useState("");
 
     const toggleMenu = () => setSlidebar(!slidebar);
 
-    console.log(global.USERID, "gfufgcufycuyfu");
-    /*
-    let linkname = `/login`
-    if(global.USERID !== ""){
-        linkname = `/profile/${global.USERID}`;
-        console.log("not empty");
-    }
-    */
+    useEffect(() => {
+
+        setUser(String(global.USERID))
+        console.log(global.USERID);
+        return;
+    }, [global.USERID])
+    console.log(global.USERID);
 
     return (
         <>
@@ -33,7 +33,7 @@ export default function NavBar () {
                         <CustomLink>
                             <button className="menu-button" onClick={toggleMenu}><img src={menu} className='nav_img'/></button> 
                         </CustomLink>
-                        <CustomLink to={global.USERID === "" ? `/login` : `/profile/${global.USERID}`}>
+                        <CustomLink to={global.USERID ? `/profile/${global.USERID}` : '/login'}>
                             <button className="menu-button"><img src={profile} className='nav_img'/></button>
                         </CustomLink>
                         <CustomLink to='/settings'>

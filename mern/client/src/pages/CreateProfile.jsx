@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router";
 
-// Access by changing website address to http://localhost:3000/newprofile
+// Access by changing website address to http://127.0.0.1:3000/newprofile
 
 export default function CreateProfile() {
   const [info, setInfo] = useState({

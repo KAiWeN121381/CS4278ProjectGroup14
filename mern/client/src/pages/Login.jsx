@@ -38,14 +38,14 @@ export default function LoginPage() {
                 // Contains email, family_name, given_name, and other stuff that I dont think we need 
                 var decodedResponse = jwtDecode(credentialResponse.credential);
                 let tempUsers = users.filter((user) => user.email === decodedResponse.email)
-                if (tempUsers.length !== -1){
+                if (tempUsers.length !== 0){
                     global.USERID = String(tempUsers[0]._id);
                     console.log(decodedResponse.email);
                     console.log(global.USERID, "asdfasdfasdfad");
                     navigate(`/`); // Returns to main page
                 }
                 else{
-                    navigate(`/createprofile`)
+                    navigate(`/newprofile`)
                 }
             }}
             onError={() => {
