@@ -102,8 +102,10 @@ export default function PostDisplay() {
               <div>
                 <h5>Facilities: </h5>
               </div>
-              <h5>Location: </h5>
-              <MapComponent />
+              <div style={{ height: "10rem" }}>
+                <h5>Location: </h5>
+                <MapComponent />
+              </div>
             </div>
             <div className="post-details-wrapper">
               <button className="request-sublet-button">Request Sublet</button>

@@ -125,7 +125,7 @@ body {
   border-radius: 20px;
   min-height: 40rem;
   align-items: stretch;
-  justify-content: space-around;
+  justify-content: space-between;
 }
 
 .post-details-text {
