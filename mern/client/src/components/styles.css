@@ -60,12 +60,12 @@ body {
 .menu {
   background: black;
   color: white;
-  width: 250px;
+  width: 12vw;
   height: 1000vh;
   display: flex;
   justify-content: center;
   position: fixed;
-  top: 0;
+  top: 6.8vh;
   left: -100%;
   transition: 850ms;
   z-index: 2;

@@ -14,6 +14,7 @@ export default function NavBar () {
     const[slidebar, setSlidebar] = useState(false);
 
     const toggleMenu = () => setSlidebar(!slidebar);
+    const closeMenu = () => setSlidebar(false);
 
     return (
         <>
@@ -25,10 +26,10 @@ export default function NavBar () {
                             <button className="menu-button" onClick={toggleMenu}><img src={menu} className='nav_img'/></button> 
                         </CustomLink>
                         <CustomLink to='/login'>
-                            <button className="menu-button"><img src={profile} className='nav_img'/></button>
+                            <button className="menu-button" onClick={closeMenu}><img src={profile} className='nav_img'/></button>
                         </CustomLink>
                         <CustomLink to='/settings'>
-                            <button className="menu-button"><img src={setting} className='nav_img'/></button>
+                            <button className="menu-button" onClick={closeMenu}><img src={setting} className='nav_img'/></button>
                         </CustomLink>
                     </div>
                     
@@ -38,7 +39,7 @@ export default function NavBar () {
             </nav>
             <nav className={slidebar ? 'menu active' : 'menu'}>
                 <ul className='menu-items' onClick={toggleMenu}>
-                    <button className='cancel-button' style={{ marginLeft:"85%", color:'white'}}>X</button>
+                    <button className='cancel-button' style={{ marginLeft:"75%", color:'white'}}>X</button>
                     <CustomLink to='/'><p style={{color:'white'}}>Homepage</p></CustomLink>
                     <CustomLink to='/report'><p style={{color:'white'}}>Report</p></CustomLink>
                 </ul>
