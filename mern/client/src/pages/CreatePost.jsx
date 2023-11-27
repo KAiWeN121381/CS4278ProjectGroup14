@@ -167,7 +167,7 @@ export default function CreatePost() {
 
   // This following section will display the form that takes the input from the user.
   return (
-    <div>
+    <div style={{marginLeft:"2vw"}}>
       <h3>Create New Post</h3>
       <form onSubmit={onSubmit}>
         <div className="form-group">
