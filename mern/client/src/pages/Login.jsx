@@ -3,17 +3,11 @@ import { jwtDecode } from 'jwt-decode';
 import { useNavigate } from 'react-router-dom';
 import React, { useEffect, useState } from "react";
 
-var userID = "";
-global.USERID = userID;
-
-localStorage.setItem("USERID", "");
-
 export default function LoginPage() {
     const [users, setUsers] = useState([]);
-    
+
     const navigate = useNavigate();
 
-    //let linkname = `/createprofile`;
     useEffect(() => {
             async function getUsers() {
                 const response = await fetch(`http://127.0.0.1:5050/users/`);
@@ -33,6 +27,12 @@ export default function LoginPage() {
             return;
     }, [users.length]);
 
+    let userID = sessionStorage.getItem("userID");
+
+    if(userID) {
+        navigate(`/profile/${userID}`);
+    }
+
     return (
         <GoogleOAuthProvider clientId='968768895156-u0n5f8i1hh1hpg97kn0k49loulgrr4mk.apps.googleusercontent.com'>
             <GoogleLogin
@@ -41,10 +41,10 @@ export default function LoginPage() {
                 var decodedResponse = jwtDecode(credentialResponse.credential);
                 let tempUsers = users.filter((user) => user.email === decodedResponse.email)
                 if (tempUsers.length !== 0){
-                    global.USERID = String(tempUsers[0]._id);
+                    sessionStorage.setItem("userID", String(tempUsers[0]._id));
+                    userID = sessionStorage.getItem("userID");
                     console.log(decodedResponse.email);
-                    console.log(global.USERID, "asdfasdfasdfad");
-                    navigate(`/`); // Returns to main page
+                    navigate(`/profile/${userID}`);
                 }
                 else{
                     navigate(`/newprofile`)
