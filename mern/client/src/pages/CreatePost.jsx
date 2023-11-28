@@ -205,7 +205,7 @@ export default function CreatePost() {
         <div className="form-group">
           <label htmlFor="price">Price </label>
           <input
-            type="text"
+            type="number"
             className="form-control"
             id="price"
             value={form.price}
@@ -236,7 +236,7 @@ export default function CreatePost() {
           <label htmlFor="distance">Distance </label>
           <input
             data-testid="dist-input"
-            type="text"
+            type="number"
             className="form-control"
             id="distance"
             value={form.distance}
