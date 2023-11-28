@@ -5,6 +5,9 @@ import info from "../assets/info.png";
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router";
 
+import { MdPets, MdKitchen } from "react-icons/md";
+import { CgGym } from "react-icons/cg";
+
 export default function PostDisplay() {
   const [form, setForm] = useState({
     username: "", // The username / ID
@@ -101,6 +104,11 @@ export default function PostDisplay() {
               </div>
               <div>
                 <h5>Facilities: </h5>
+                <div className="filter-content-block">
+                    {form.pet && <MdPets className="facility-button-img"/>}
+                    {form.gym && <CgGym className="facility-button-img"/>}
+                    {form.kitchen && <MdKitchen className="facility-button-img"/>}
+                  </div>
               </div>
               <div style={{ height: "10rem" }}>
                 <h5>Location: </h5>
