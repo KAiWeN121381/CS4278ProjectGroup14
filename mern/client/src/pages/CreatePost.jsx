@@ -172,6 +172,7 @@ export default function CreatePost() {
   let userID = sessionStorage.getItem("userID");
 
   // This following section will display the form that takes the input from the user.
+  // Make everything required
   return (
     <div style={{marginLeft:"2vw"}}>
       <h3>Create New Post</h3>

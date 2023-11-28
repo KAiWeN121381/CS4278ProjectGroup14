@@ -95,6 +95,10 @@ export default function EditPost() {
     navigate("/");
   }
 
+  function cancelEdit() {
+    navigate(-1);
+  }
+
   // This following section will display the form that takes input from the user to update the data.
   return (
     <div>
@@ -226,6 +230,15 @@ export default function EditPost() {
             value="Update post"
             className="btn btn-primary"
           />
+        </div>
+        <div className="form-group">
+          <button
+            type="button"
+            className="btn btn-primary"
+            onClick={cancelEdit}
+          >
+            Cancel
+          </button>
         </div>
       </form>
     </div>
