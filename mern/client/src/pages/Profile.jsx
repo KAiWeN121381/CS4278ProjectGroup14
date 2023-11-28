@@ -3,6 +3,7 @@ import CustomLink from "../components/CustomLink";
 
 import { useParams, useNavigate } from "react-router";
 import React, { useEffect, useState } from "react";
+import { googleLogout } from "@react-oauth/google";
 
 // The global variables for login information can be put here or anywhere outside of functions
 
@@ -113,6 +114,12 @@ export default function Profile() {
     return;
   }, [form.post, navigate]);
 
+  function userLogout() {
+    googleLogout();
+    sessionStorage.removeItem("userID");
+    navigate("/");
+  }
+
   return (
     <div className="left_right_separator">
       <div>
@@ -122,6 +129,7 @@ export default function Profile() {
         <CustomLink to={linkname}>
           <button className="edit-profile-button">Edit Profile</button>
         </CustomLink>
+        <button className="edit-profile-button" onClick={userLogout}>Logout</button>
       </div>
       <div>
         <h2>Your Posts</h2>

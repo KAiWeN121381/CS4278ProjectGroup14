@@ -47,6 +47,10 @@ export default function EditProfile() {
     });
   }
 
+  function cancelEdit() {
+    navigate(-1);
+  }
+
   async function onSubmit(e) {
     e.preventDefault();
     const editedUser = {
@@ -109,6 +113,15 @@ export default function EditProfile() {
             value="Update Profile"
             className="btn btn-primary"
           />
+        </div>
+        <div className="form-group">
+          <button
+            type="button"
+            className="btn btn-primary"
+            onClick={cancelEdit}
+          >
+            Cancel
+          </button>
         </div>
       </form>
     </div>

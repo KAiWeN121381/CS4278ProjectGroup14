@@ -129,6 +129,9 @@ export default function CreatePost() {
 
     getRecords();
     getUser();
+
+    let tempRecords = records.filter((record) => record.title === form.title);
+
     let userwithpost = {
       name: user.name,
       email: user.email,
@@ -136,7 +139,7 @@ export default function CreatePost() {
       post: String(tempRecords[0]._id),
     };
 
-    let tempRecords = records.filter((record) => record.title === form.title);
+    
     if (tempRecords.length !== -1) {
       // This will send a post request to update the data in the database.
       await fetch(`http://127.0.0.1:5050/users/${global.USERID}`, {
@@ -164,6 +167,9 @@ export default function CreatePost() {
     });
     navigate("/");
   }
+
+  // USE THIS TO GET USER ID
+  let userID = sessionStorage.getItem("userID");
 
   // This following section will display the form that takes the input from the user.
   return (
