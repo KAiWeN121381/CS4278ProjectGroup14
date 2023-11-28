@@ -40,7 +40,7 @@ export default function PostDisplay() {
       );
 
       if (!response.ok) {
-        const message = `An error has occurred: ${response.statusText}`;
+        const message = `An error at PostDisplay has occurred: ${response.statusText}`;
         window.alert(message);
         return;
       }

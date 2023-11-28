@@ -41,21 +41,17 @@ export default function Profile() {
   const params = useParams();
   const navigate = useNavigate();
   let linkname = `/editprofile/${params.id.toString()}`;
-  console.log("In Profile");
 
   useEffect(() => {
     async function fetchData() {
-      console.log("User first");
       const id = params.id.toString();
-      console.log(params.id)
       const response = await fetch(
         `http://127.0.0.1:5050/users/${params.id.toString()}`
       );
 
       if (!response.ok) {
-        const message = `An error has occurred: ${response.statusText}`;
+        const message = `An error has occurred fetching user data: ${response.statusText}`;
         window.alert(message);
-        console.log("error 1");
         return;
       }
 
@@ -76,13 +72,11 @@ export default function Profile() {
 
   useEffect(() => {
     async function fetchData() {
-      console.log("post first");
       const id = form.post;
       const response = await fetch(`http://127.0.0.1:5050/posts/${form.post}`);
 
       if (!response.ok) {
-        const message = `An error has occurred: ${response.statusText}`;
-        console.log("error 2");
+        const message = `An error has occurred fetching post: ${response.statusText}`;
         setForm({
           username: "",
           title: "",
