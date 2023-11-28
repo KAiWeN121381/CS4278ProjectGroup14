@@ -6,6 +6,9 @@ import filter from "../assets/filter.png";
 import pricetag from "../assets/price-tag.png";
 import calendar from "../assets/calendar.png";
 
+import { MdPets, MdKitchen } from "react-icons/md";
+import { CgGym } from "react-icons/cg";
+
 // The component for displaying a preview of posts
 // TO-DO: Get search and filter results
 export default function PostGroup() {
@@ -178,6 +181,28 @@ export default function PostGroup() {
       );
       changeMade = true;
     }
+
+    if (filters.gym) {
+      tempRecords = tempRecords.filter((record) =>
+        record.gym
+      );
+      changeMade = true;
+    }
+
+    if (filters.pet) {
+      tempRecords = tempRecords.filter((record) =>
+        record.pet
+      );
+      changeMade = true;
+    }
+
+    if (filters.kitchen) {
+      tempRecords = tempRecords.filter((record) =>
+        record.kitchen
+      );
+      changeMade = true;
+    }
+
     setFRecords(tempRecords);
     setFiltered(changeMade);
   }
@@ -209,17 +234,16 @@ export default function PostGroup() {
             X
           </button>
           {/* Price range input */}
-          <div className="filter-content-price">
-            <p>Price Range:</p>
+          <div className="filter-content-block">
             <div>
               <div className="filter-content-inline">
-                <p>Minimum: </p>
+                <p>Minimum Price: </p>
                 <img src={pricetag} />
                 <input
                   data-testid="Minimum_price"
                   autoFocus={lastInput === "minPrice" ? true : false}
                   key="minPrice"
-                  type="text"
+                  type="number"
                   id="minPrice"
                   name="minPrice"
                   autoComplete="off"
@@ -233,13 +257,13 @@ export default function PostGroup() {
                 />
               </div>
               <div className="filter-content-inline">
-                <p>Maximum: </p>
+                <p>Maximum Price: </p>
                 <img src={pricetag} />
                 <input
                   data-testid="Maximum_price"
                   autoFocus={lastInput === "maxPrice" ? true : false}
                   key="maxPrice"
-                  type="text"
+                  type="number"
                   id="maxPrice"
                   name="maxPrice"
                   autoComplete="off"
@@ -255,12 +279,29 @@ export default function PostGroup() {
             </div>
           </div>
           {/* Facility selection */}
-          <div className="filter-content-facilities">
-            <p>Facilities:</p>
+          <div className="filter-content-block">
+          <p style={{fontSize:"large"}}>Facilities:</p>
+            <button 
+              className={filters.pet ? "facility-button active" : "facility-button"}
+              onClick={() => 
+              {setFilters({ ...filters, pet : !filters.pet })}}>
+                <MdPets className="facility-button-img"/>
+            </button>
+            <button 
+              className={filters.gym ? "facility-button active" : "facility-button"}
+              onClick={() => 
+              {setFilters({ ...filters, gym : !filters.gym })}}>
+                <CgGym className="facility-button-img"/>
+            </button>
+            <button 
+              className={filters.kitchen ? "facility-button active" : "facility-button"}
+              onClick={() => 
+              {setFilters({ ...filters,  kitchen : !filters.kitchen })}}>
+                <MdKitchen className="facility-button-img"/>
+            </button>
           </div>
           {/* Stay duration input */}
-          <div className="filter-content-duration">
-            <p>Intended Duration:</p>
+          <div className="filter-content-block">
             <div>
               <div className="filter-content-inline">
                 <p>Check-in: </p>

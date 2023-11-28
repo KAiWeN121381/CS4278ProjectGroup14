@@ -265,11 +265,33 @@ body {
 }
 
 .filter-content-inline {
-  padding-left: 3rem;
+  padding-left: 3vw;
   display: flex;
   align-items: baseline;
   gap: 1rem;
   padding-right: 1rem;
+}
+
+.filter-content-block {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.facility-button {
+  border-radius: 10px;
+  margin-left: 2vw;
+  border: none;
+  background-color: transparent;
+}
+
+.facility-button.active {
+  background-color: rgb(184, 184, 184);
+}
+
+.facility-button-img {
+  height: 40px;
+  width: auto;
 }
 
 .apply-filter-button {
