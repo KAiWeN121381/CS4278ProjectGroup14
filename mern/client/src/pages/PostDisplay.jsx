@@ -110,7 +110,7 @@ export default function PostDisplay() {
                     {form.kitchen && <MdKitchen className="facility-button-img"/>}
                   </div>
               </div>
-              <div style={{ height: "10rem" }}>
+              <div style={{ height: "10vh" }}>
                 <h5>Location: </h5>
                 <MapComponent />
               </div>
