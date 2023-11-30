@@ -79,7 +79,7 @@ export default function CreateProfile() {
 
     let tempUsers = users.filter((user) => user.email === info.email)
     if(tempUsers.length !== -1){
-      global.USERID = String(tempUsers[0]._id);
+      sessionStorage.setItem("userID", String(tempUsers[0]._id));
     }
 
     navigate("/");

@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router";
 
 export default function CreatePost() {
+  const navigate = useNavigate();
+  let ID = sessionStorage.getItem("userID");
+
   const [form, setForm] = useState({
     username: "", // The username / ID
     title: "",
@@ -28,8 +31,7 @@ export default function CreatePost() {
     phone: "",
   });
   const [records, setRecords] = useState([]);
-  const navigate = useNavigate();
-  if (global.USERID === "") {
+  if (ID === "") {
     navigate("/createprofile");
   }
 
@@ -85,7 +87,7 @@ export default function CreatePost() {
   }*/
   async function getUser() {
     const response = await fetch(
-      `http://127.0.0.1:5050/users/${global.USERID}`
+      `http://127.0.0.1:5050/users/${ID}`
     );
 
     const user = {
@@ -142,7 +144,7 @@ export default function CreatePost() {
     
     if (tempRecords.length !== -1) {
       // This will send a post request to update the data in the database.
-      await fetch(`http://127.0.0.1:5050/users/${global.USERID}`, {
+      await fetch(`http://127.0.0.1:5050/users/${ID}`, {
         method: "PATCH",
         body: JSON.stringify(userwithpost),
         headers: {
