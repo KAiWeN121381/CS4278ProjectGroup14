@@ -108,7 +108,7 @@ describe("Home Component", () => {
     // Wait for the API request to be resolved
     await act(async () => {
       await waitFor(() => {
-        expect(fetch).toHaveBeenCalledWith("http://127.0.0.1:5050/posts/");
+        expect(fetch).toHaveBeenCalledWith("http://52.15.93.98:5050/posts/");
       });
     });
   });
@@ -135,7 +135,7 @@ describe("Home Component", () => {
 
     await act(async () => {
       await waitFor(() => {
-        expect(fetch).toHaveBeenCalledWith("http://127.0.0.1:5050/posts/");
+        expect(fetch).toHaveBeenCalledWith("http://52.15.93.98:5050/posts/");
       });
     });
   });
@@ -203,7 +203,7 @@ describe("Home Component", () => {
 
       // Assert that the form was submitted
       expect(fetch).toHaveBeenCalled();
-      expect(fetch).toHaveBeenCalledWith("http://127.0.0.1:5050/posts", {
+      expect(fetch).toHaveBeenCalledWith("http://52.15.93.98:5050/posts", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -600,7 +600,7 @@ describe("Home Component", () => {
   //   // Wait for the asynchronous tasks to complete
   //   await waitFor(() => {
   //     // Assert that fetch was called with the correct arguments
-  //     expect(global.fetch).toHaveBeenCalledWith("http://127.0.0.1:5050/posts", {
+  //     expect(global.fetch).toHaveBeenCalledWith("http://52.15.93.98:5050/posts", {
   //       method: "POST",
   //       headers: {
   //         "Content-Type": "application/json",

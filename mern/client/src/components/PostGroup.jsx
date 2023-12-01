@@ -30,7 +30,7 @@ export default function PostGroup() {
   // This method fetches the records from the database.
   useEffect(() => {
     async function getRecords() {
-      const response = await fetch(`http://127.0.0.1:5050/posts/`);
+      const response = await fetch(`http://52.15.93.98:5050/posts/`);
 
       if (!response.ok) {
         const message = `An error occurred: ${response.statusText}`;
@@ -183,23 +183,17 @@ export default function PostGroup() {
     }
 
     if (filters.gym) {
-      tempRecords = tempRecords.filter((record) =>
-        record.gym
-      );
+      tempRecords = tempRecords.filter((record) => record.gym);
       changeMade = true;
     }
 
     if (filters.pet) {
-      tempRecords = tempRecords.filter((record) =>
-        record.pet
-      );
+      tempRecords = tempRecords.filter((record) => record.pet);
       changeMade = true;
     }
 
     if (filters.kitchen) {
-      tempRecords = tempRecords.filter((record) =>
-        record.kitchen
-      );
+      tempRecords = tempRecords.filter((record) => record.kitchen);
       changeMade = true;
     }
 
@@ -280,24 +274,36 @@ export default function PostGroup() {
           </div>
           {/* Facility selection */}
           <div className="filter-content-block">
-          <p style={{fontSize:"large"}}>Facilities:</p>
-            <button 
-              className={filters.pet ? "facility-button active" : "facility-button"}
-              onClick={() => 
-              {setFilters({ ...filters, pet : !filters.pet })}}>
-                <MdPets className="facility-button-img"/>
+            <p style={{ fontSize: "large" }}>Facilities:</p>
+            <button
+              className={
+                filters.pet ? "facility-button active" : "facility-button"
+              }
+              onClick={() => {
+                setFilters({ ...filters, pet: !filters.pet });
+              }}
+            >
+              <MdPets className="facility-button-img" />
             </button>
-            <button 
-              className={filters.gym ? "facility-button active" : "facility-button"}
-              onClick={() => 
-              {setFilters({ ...filters, gym : !filters.gym })}}>
-                <CgGym className="facility-button-img"/>
+            <button
+              className={
+                filters.gym ? "facility-button active" : "facility-button"
+              }
+              onClick={() => {
+                setFilters({ ...filters, gym: !filters.gym });
+              }}
+            >
+              <CgGym className="facility-button-img" />
             </button>
-            <button 
-              className={filters.kitchen ? "facility-button active" : "facility-button"}
-              onClick={() => 
-              {setFilters({ ...filters,  kitchen : !filters.kitchen })}}>
-                <MdKitchen className="facility-button-img"/>
+            <button
+              className={
+                filters.kitchen ? "facility-button active" : "facility-button"
+              }
+              onClick={() => {
+                setFilters({ ...filters, kitchen: !filters.kitchen });
+              }}
+            >
+              <MdKitchen className="facility-button-img" />
             </button>
           </div>
           {/* Stay duration input */}

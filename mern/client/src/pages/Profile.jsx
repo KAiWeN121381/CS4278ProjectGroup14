@@ -47,7 +47,7 @@ export default function Profile() {
     async function fetchData() {
       const id = params.id.toString();
       const response = await fetch(
-        `http://127.0.0.1:5050/users/${params.id.toString()}`
+        `http://52.15.93.98:5050/users/${params.id.toString()}`
       );
 
       if (!response.ok) {
@@ -74,7 +74,9 @@ export default function Profile() {
   useEffect(() => {
     async function fetchData() {
       const id = form.post;
-      const response = await fetch(`http://127.0.0.1:5050/posts/${form.post}`);
+      const response = await fetch(
+        `http://52.15.93.98:5050/posts/${form.post}`
+      );
 
       if (!response.ok) {
         const message = `An error has occurred fetching post: ${response.statusText}`;
@@ -129,7 +131,9 @@ export default function Profile() {
         <CustomLink to={linkname}>
           <button className="edit-profile-button">Edit Profile</button>
         </CustomLink>
-        <button className="edit-profile-button" onClick={userLogout}>Logout</button>
+        <button className="edit-profile-button" onClick={userLogout}>
+          Logout
+        </button>
       </div>
       <div>
         <h2>Your Posts</h2>
@@ -138,13 +142,14 @@ export default function Profile() {
             <button className="make-post-button">Make a Post</button>
           </CustomLink>
         )}
-        {form.post !== "" && 
-        <div>
-          <PostPreview post={post} />
-          <CustomLink to={postlinkname}><button className="make-post-button">Edit Post</button></CustomLink>
-        </div>
-        }
-
+        {form.post !== "" && (
+          <div>
+            <PostPreview post={post} />
+            <CustomLink to={postlinkname}>
+              <button className="make-post-button">Edit Post</button>
+            </CustomLink>
+          </div>
+        )}
       </div>
     </div>
   );

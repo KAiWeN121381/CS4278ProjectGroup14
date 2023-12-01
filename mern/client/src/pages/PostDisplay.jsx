@@ -39,7 +39,7 @@ export default function PostDisplay() {
     async function fetchData() {
       const id = params.id.toString();
       const response = await fetch(
-        `http://127.0.0.1:5050/posts/${params.id.toString()}`
+        `http://52.15.93.98:5050/posts/${params.id.toString()}`
       );
 
       if (!response.ok) {
@@ -105,10 +105,12 @@ export default function PostDisplay() {
               <div>
                 <h5>Facilities: </h5>
                 <div className="filter-content-block">
-                    {form.pet && <MdPets className="facility-button-img"/>}
-                    {form.gym && <CgGym className="facility-button-img"/>}
-                    {form.kitchen && <MdKitchen className="facility-button-img"/>}
-                  </div>
+                  {form.pet && <MdPets className="facility-button-img" />}
+                  {form.gym && <CgGym className="facility-button-img" />}
+                  {form.kitchen && (
+                    <MdKitchen className="facility-button-img" />
+                  )}
+                </div>
               </div>
               <div style={{ height: "10vh" }}>
                 <h5>Location: </h5>

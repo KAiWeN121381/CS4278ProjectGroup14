@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router";
 
-// Access by changing website address to http://127.0.0.1:3000/newprofile
+// Access by changing website address to http://52.15.93.98:3000/newprofile
 
 export default function CreateProfile() {
   const [info, setInfo] = useState({
@@ -9,25 +9,25 @@ export default function CreateProfile() {
     email: "",
     phone: "",
   });
-  const [users, setUsers] = useState([])
+  const [users, setUsers] = useState([]);
 
   useEffect(() => {
-      async function getUsers() {
-          const response = await fetch(`http://127.0.0.1:5050/users/`);
-  
-          if (!response.ok) {
-          const message = `An error occurred: ${response.statusText}`;
-          window.alert(message);
-          return;
-          }
-  
-          const users = await response.json();
-          setUsers(users);
+    async function getUsers() {
+      const response = await fetch(`http://52.15.93.98:5050/users/`);
+
+      if (!response.ok) {
+        const message = `An error occurred: ${response.statusText}`;
+        window.alert(message);
+        return;
       }
-  
-      getUsers();
-  
-      return;
+
+      const users = await response.json();
+      setUsers(users);
+    }
+
+    getUsers();
+
+    return;
   }, [users.length]);
 
   const navigate = useNavigate();
@@ -45,7 +45,7 @@ export default function CreateProfile() {
     // When a post request is sent to the create url, we'll add a new record to the database.
     const newUser = { ...info };
 
-    await fetch("http://127.0.0.1:5050/users", {
+    await fetch("http://52.15.93.98:5050/users", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -63,22 +63,22 @@ export default function CreateProfile() {
     });
 
     async function getUsers() {
-      const response = await fetch(`http://127.0.0.1:5050/users/`);
+      const response = await fetch(`http://52.15.93.98:5050/users/`);
 
       if (!response.ok) {
-      const message = `An error occurred: ${response.statusText}`;
-      window.alert(message);
-      return;
+        const message = `An error occurred: ${response.statusText}`;
+        window.alert(message);
+        return;
       }
 
       const users = await response.json();
       setUsers(users);
-  }
+    }
 
-  getUsers();
+    getUsers();
 
-    let tempUsers = users.filter((user) => user.email === info.email)
-    if(tempUsers.length !== -1){
+    let tempUsers = users.filter((user) => user.email === info.email);
+    if (tempUsers.length !== -1) {
       sessionStorage.setItem("userID", String(tempUsers[0]._id));
     }
 

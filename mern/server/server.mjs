@@ -7,7 +7,39 @@ import users from "./routes/users.mjs";
 const PORT = 5050;
 const app = express();
 
-app.use(cors({ origin: "*" }));
+// Use the cors middleware to handle CORS headers
+// app.use(
+//   cors({
+//     origin: "*", // You can replace '*' with the specific origin(s) of your client application
+//     methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+//     credentials: true, // Enable credentials (if needed)
+//     exposedHeaders: "Custom-Header", // Expose additional headers to the client (if needed)
+//   })
+// );
+
+app.use("/posts", (req, res, next) => {
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader(
+    "Access-Control-Allow-Methods",
+    "GET,HEAD,PUT,PATCH,POST,DELETE"
+  );
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+  res.setHeader("Access-Control-Allow-Credentials", "true");
+  res.setHeader("Access-Control-Expose-Headers", "Custom-Header");
+  next();
+});
+
+app.use("/users", (req, res, next) => {
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader(
+    "Access-Control-Allow-Methods",
+    "GET,HEAD,PUT,PATCH,POST,DELETE"
+  );
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+  res.setHeader("Access-Control-Allow-Credentials", "true");
+  res.setHeader("Access-Control-Expose-Headers", "Custom-Header");
+  next();
+});
 
 app.use(express.json());
 
