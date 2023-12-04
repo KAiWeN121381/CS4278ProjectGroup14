@@ -4,6 +4,7 @@ import "./loadEnvironment.mjs";
 import records from "./routes/record.mjs";
 import users from "./routes/users.mjs";
 import https from "https";
+import fs from "fs";
 
 const PORT = 5050;
 const app = express();
