@@ -285,19 +285,19 @@ export default function PostGroup() {
               className={filters.pet ? "facility-button active" : "facility-button"}
               onClick={() => 
               {setFilters({ ...filters, pet : !filters.pet })}}>
-                <MdPets className="facility-button-img"/>
+                <MdPets className="facility-button-img" title="Pets"/>
             </button>
             <button 
               className={filters.gym ? "facility-button active" : "facility-button"}
               onClick={() => 
               {setFilters({ ...filters, gym : !filters.gym })}}>
-                <CgGym className="facility-button-img"/>
+                <CgGym className="facility-button-img" title="Gym"/>
             </button>
             <button 
               className={filters.kitchen ? "facility-button active" : "facility-button"}
               onClick={() => 
               {setFilters({ ...filters,  kitchen : !filters.kitchen })}}>
-                <MdKitchen className="facility-button-img"/>
+                <MdKitchen className="facility-button-img" title="Kitchen"/>
             </button>
           </div>
           {/* Stay duration input */}
