@@ -74,7 +74,7 @@ export default function PostDisplay() {
 
   useEffect(() => {
     async function fetchData() {
-      const id = sessionStorage.getItem("userID").toString();
+      const id = sessionStorage.getItem("userID") ? sessionStorage.getItem("userID").toString() : "";
       const response = await fetch(
         `http://127.0.0.1:5050/users/${id.toString()}`
       );
@@ -112,7 +112,7 @@ export default function PostDisplay() {
         <div className="post-right">
           <div style={{ display: "flex" }}>
             <h1>Property details</h1>
-            <img
+            {/* <img
               src={info}
               style={{
                 width: "2.5vh",
@@ -120,7 +120,7 @@ export default function PostDisplay() {
                 marginTop: "3vh",
                 marginLeft: "0.5vw",
               }}
-            />
+            /> */}
           </div>
           <div className="post-details">
             <div className="post-details-text">
@@ -142,9 +142,9 @@ export default function PostDisplay() {
               <div>
                 <h5>Facilities: </h5>
                 <div className="filter-content-block">
-                    {form.pet && <MdPets className="facility-button-img"/>}
-                    {form.gym && <CgGym className="facility-button-img"/>}
-                    {form.kitchen && <MdKitchen className="facility-button-img"/>}
+                    {form.pet && <MdPets className="facility-button-img" title="Pets allowed"/>}
+                    {form.gym && <CgGym className="facility-button-img" title="Gym"/>}
+                    {form.kitchen && <MdKitchen className="facility-button-img" title="Kitchen"/>}
                   </div>
               </div>
               <div style={{ height: "10vh" }}>
