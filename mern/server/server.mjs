@@ -3,6 +3,7 @@ import cors from "cors";
 import "./loadEnvironment.mjs";
 import records from "./routes/record.mjs";
 import users from "./routes/users.mjs";
+import https from "https";
 
 const PORT = 5050;
 const app = express();
@@ -48,6 +49,12 @@ app.use("/posts", records);
 app.use("/users", users);
 
 // start the Express server
-app.listen(PORT, () => {
-  console.log(`Server listening on port ${PORT}`);
+
+let options = {
+  key: fs.readFileSync("./privkey.pem"),
+  cert: fs.readFileSync("./cert.pem"),
+};
+
+server = https.createServer(options, app).listen(port, () => {
+  console.log(`Listening on: ${port}`);
 });
