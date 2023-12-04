@@ -57,5 +57,5 @@ let options = {
 };
 
 server = https.createServer(options, app).listen(port, () => {
-  console.log(`Listening on: ${port}`);
+  console.log(`Listening on: ${PORT}`);
 });
