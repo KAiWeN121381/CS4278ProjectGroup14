@@ -47,7 +47,7 @@ export default function Profile() {
     async function fetchData() {
       const id = params.id.toString();
       const response = await fetch(
-        `http://52.15.93.98:5050/users/${params.id.toString()}`
+        `https://anchorlease.space:5050/users/${params.id.toString()}`
       );
 
       if (!response.ok) {
@@ -75,7 +75,7 @@ export default function Profile() {
     async function fetchData() {
       const id = form.post;
       const response = await fetch(
-        `http://52.15.93.98:5050/posts/${form.post}`
+        `https://anchorlease.space:5050/posts/${form.post}`
       );
 
       if (!response.ok) {
