@@ -13,6 +13,7 @@ import Profile from './pages/Profile';
 import CreateProfile from './pages/CreateProfile';
 import EditProfile from './components/editProfile';
 import Settings from './pages/Settings';
+import { ContactUs } from './pages/Contact';
 
 function App() {
   return (
@@ -31,7 +32,8 @@ function App() {
           <Route path='/createprofile' element={<CreateProfile />} />          
           <Route path='/editprofile/:id' element={<EditProfile />} />          
           <Route path='/settings' element={<Settings />} />
-          <Route path='*' element={<NoPage />} />
+          <Route path='/contact' element={<ContactUs />} />
+          <Route path='*' element={<NoPage />} /> 
         </Routes>
       </div>
     </div>

@@ -43,7 +43,7 @@ export default function NavBar () {
                 <ul className='menu-items' onClick={toggleMenu}>
                     <button className='cancel-button' style={{ marginLeft:"75%", color:'white'}}>X</button>
                     <CustomLink to='/'><p style={{color:'white'}}>Homepage</p></CustomLink>
-                    <CustomLink to='/report'><p style={{color:'white'}}>Report</p></CustomLink>
+                    <CustomLink to='/contact'><p style={{color:'white'}}>Contact Us</p></CustomLink>
                 </ul>
             </nav>
         </> 
