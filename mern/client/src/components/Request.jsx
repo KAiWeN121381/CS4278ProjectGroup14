@@ -16,7 +16,7 @@ export default function Request (props) {
       emailjs.sendForm('service_omrvnis', 'template_9m7gvmr', form.current, 'LwcYqrkLrSBfx8E62')
         .then((result) => {
             console.log(result.text);
-            window.alert("Request sent successfully!")
+            window.alert("Request sent successfully!");
         }, (error) => {
             console.log(error.text);
         });
