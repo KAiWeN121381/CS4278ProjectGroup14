@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router";
 
-// Access by changing website address to http://52.15.93.98:3000/newprofile
+// Access by changing website address to //52.15.93.98:3000/newprofile
 
 export default function CreateProfile() {
   const [info, setInfo] = useState({
@@ -13,7 +13,7 @@ export default function CreateProfile() {
 
   useEffect(() => {
     async function getUsers() {
-      const response = await fetch(`http://52.15.93.98:5050/users/`);
+      const response = await fetch(`//52.15.93.98:5050/users/`);
 
       if (!response.ok) {
         const message = `An error occurred: ${response.statusText}`;
@@ -45,7 +45,7 @@ export default function CreateProfile() {
     // When a post request is sent to the create url, we'll add a new record to the database.
     const newUser = { ...info };
 
-    await fetch("http://52.15.93.98:5050/users", {
+    await fetch("//52.15.93.98:5050/users", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -63,7 +63,7 @@ export default function CreateProfile() {
     });
 
     async function getUsers() {
-      const response = await fetch(`http://52.15.93.98:5050/users/`);
+      const response = await fetch(`//52.15.93.98:5050/users/`);
 
       if (!response.ok) {
         const message = `An error occurred: ${response.statusText}`;

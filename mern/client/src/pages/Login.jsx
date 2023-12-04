@@ -10,7 +10,7 @@ export default function LoginPage() {
 
   useEffect(() => {
     async function getUsers() {
-      const response = await fetch(`http://52.15.93.98:5050/users/`);
+      const response = await fetch(`//52.15.93.98:5050/users/`);
 
       if (!response.ok) {
         const message = `An error occurred: ${response.statusText}`;
