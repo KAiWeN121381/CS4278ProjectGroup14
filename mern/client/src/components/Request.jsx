@@ -7,19 +7,20 @@ export default function Request (props) {
   const navigate = useNavigate();
 
   const sendEmail = (e) => {
+    e.preventDefault();
+
     if (!sessionStorage.getItem("userID")) {
         navigate('/login')
     }
-
-    e.preventDefault();
-
-    emailjs.sendForm('service_omrvnis', 'template_9m7gvmr', form.current, 'LwcYqrkLrSBfx8E62')
-      .then((result) => {
-          console.log(result.text);
-          window.alert("Request sent successfully!")
-      }, (error) => {
-          console.log(error.text);
-      });
+    else {
+      emailjs.sendForm('service_omrvnis', 'template_9m7gvmr', form.current, 'LwcYqrkLrSBfx8E62')
+        .then((result) => {
+            console.log(result.text);
+            window.alert("Request sent successfully!")
+        }, (error) => {
+            console.log(error.text);
+        });
+      }
   };
 
   return (

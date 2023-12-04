@@ -44,7 +44,7 @@ export default function LoginPage() {
                     sessionStorage.setItem("userID", String(tempUsers[0]._id));
                     userID = sessionStorage.getItem("userID");
                     console.log(decodedResponse.email);
-                    navigate(`/`);
+                    navigate(-1);
                 }
                 else{
                     navigate(`/newprofile`)

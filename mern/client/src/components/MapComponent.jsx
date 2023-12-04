@@ -29,7 +29,6 @@ function MapComponent (props){
         setPin(results[0].geometry.location);
         setCenter(results[0].geometry.location);
         setNeedReload(false);
-        console.log(pin);
       }).catch(console.error);
     }
 
