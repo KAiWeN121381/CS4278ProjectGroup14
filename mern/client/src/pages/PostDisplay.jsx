@@ -1,6 +1,5 @@
 import Lhouse from "../assets/defaulthouse.png";
 import MapComponent from "../components/MapComponent";
-import info from "../assets/info.png";
 import Request from "../components/Request";
 
 import React, { useState, useEffect } from "react";
@@ -41,6 +40,9 @@ export default function PostDisplay() {
     records: [],
   });
 
+  const [posters, setPosters] = useState([]);
+  const [toEmail, setToEmail] = useState("");
+
   const params = useParams();
   const navigate = useNavigate();
 
@@ -71,6 +73,35 @@ export default function PostDisplay() {
 
     return;
   }, [params.id, navigate]);
+
+  useEffect(() => {
+    async function getUsers() {
+        const response = await fetch(`http://127.0.0.1:5050/users/`);
+
+        if (!response.ok) {
+        const message = `An error occurred: ${response.statusText}`;
+        window.alert(message);
+        return;
+        }
+
+        const users = await response.json();
+        setPosters(users);
+    }
+
+    getUsers();
+
+    
+    let tempPoster = posters.filter((poster) => poster.post === params.id);
+    if (tempPoster.length > 0) {  
+      let to_email = tempPoster[0].email.toString(); 
+      console.log(tempPoster);
+      setToEmail(to_email);
+      console.log(toEmail);
+    }
+    
+    return;
+  }, [posters.length]);
+  
 
   useEffect(() => {
     async function fetchData() {
@@ -112,15 +143,6 @@ export default function PostDisplay() {
         <div className="post-right">
           <div style={{ display: "flex" }}>
             <h1>Property details</h1>
-            {/* <img
-              src={info}
-              style={{
-                width: "2.5vh",
-                height: "2.5vh",
-                marginTop: "3vh",
-                marginLeft: "0.5vw",
-              }}
-            /> */}
           </div>
           <div className="post-details">
             <div className="post-details-text">
@@ -153,7 +175,7 @@ export default function PostDisplay() {
               </div>
             </div>
             <div className="post-details-wrapper">
-              <Request to_name={form.username} from_name={user.name} reply_to={user.email} to_email={"liao.li@vanderbilt.edu"}/>
+              <Request to_name={form.username} from_name={user.name} reply_to={user.email} to_email={toEmail}/>
               {/* <button className="request-sublet-button">Request Sublet</button> */}
             </div>
           </div>
