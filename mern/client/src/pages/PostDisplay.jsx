@@ -112,7 +112,7 @@ export default function PostDisplay() {
               </div>
               <div style={{ height: "10vh" }}>
                 <h5>Location: </h5>
-                <MapComponent />
+                <MapComponent address={form.address}/>
               </div>
             </div>
             <div className="post-details-wrapper">

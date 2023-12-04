@@ -333,3 +333,9 @@ body {
   border-color: transparent;
   font-size: large;
 }
+
+.edit-profile-button {
+  border-radius: 6px;
+  background-color: #ffa60d;
+  margin-bottom: 1vh;
+}

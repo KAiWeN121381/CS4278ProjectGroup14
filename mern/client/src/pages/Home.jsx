@@ -10,7 +10,7 @@ export default function Home() {
             Right section includes search bar and post displays */}
         <div className="left_right_separator">
             <div className="home-left">
-                <MapComponent />
+                <MapComponent address=""/>
             </div>
             <div className="home-right">
                 <PostGroup key="PostGroup"/>

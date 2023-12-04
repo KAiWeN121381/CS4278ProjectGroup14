@@ -23,16 +23,16 @@ export default function NavBar () {
                 <ul>
                     <div className='nav_imgs'>
                         <CustomLink>
-                            <button className="menu-button" onClick={toggleMenu}><img src={menu} className='nav_img'/></button> 
+                            <button className="menu-button" onClick={toggleMenu}><img src={menu} alt="menu" className='nav_img'/></button> 
                         </CustomLink>
                         <CustomLink to='/settings'>
-                            <button className="menu-button" onClick={closeMenu}><img src={setting} className='nav_img'/></button>
+                            <button className="menu-button" onClick={closeMenu}><img src={setting} alt="settings" className='nav_img'/></button>
                         </CustomLink>
                     </div>
                     
-                    <CustomLink to='/' ><img src={logo} className="site-title" /></CustomLink>
+                    <CustomLink to='/' ><img src={logo} alt="logo" className="site-title" /></CustomLink>
                     <CustomLink to='/login'>
-                            <button className="menu-button" style={{position:"absolute", right:"0.8vw", marginTop:"8vh"}} onClick={closeMenu}><img src={profile} className='nav_img'/></button>
+                            <button className="menu-button" style={{position:"absolute", right:"0.8vw", marginTop:"8vh"}} onClick={closeMenu}><img src={profile} alt="profile" className='nav_img'/></button>
                     </CustomLink>
                     {/* <CustomLink to='/createpost'>
                         <button className='make-post-button' style={{position:"absolute", right:"0", marginTop:"7vh"}}>Make a Post</button>

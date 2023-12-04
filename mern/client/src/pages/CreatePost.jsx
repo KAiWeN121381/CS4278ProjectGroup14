@@ -170,9 +170,6 @@ export default function CreatePost() {
     navigate("/");
   }
 
-  // USE THIS TO GET USER ID
-  let userID = sessionStorage.getItem("userID");
-
   // This following section will display the form that takes the input from the user.
   // Make everything required
   return (
@@ -186,6 +183,7 @@ export default function CreatePost() {
             type="text"
             className="form-control"
             id="username"
+            defaultValue={user.name}
             value={form.username}
             onChange={(e) => updateForm({ username: e.target.value })}
           />
