@@ -138,7 +138,7 @@ export default function CreatePost() {
       name: user.name,
       email: user.email,
       phone: user.phone,
-      post: String(tempRecords[0]._id),
+      post: String(tempRecords[0].id),
     };
 
     

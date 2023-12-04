@@ -119,6 +119,27 @@ export default function Profile() {
     sessionStorage.removeItem("userID");
     navigate("/");
   }
+  async function deleteRecord() {
+    await fetch(`http://127.0.0.1:5050/posts/${form.post}`, {
+      method: "DELETE"
+    });
+    console.log(params.id.toString());
+    console.log("deleteRecord");
+    let userwithoutpost = {
+      name: form.name,
+      email: form.email,
+      phone: form.phone,
+      post: "",
+    };
+
+    await fetch(`http://127.0.0.1:5050/users/${params.id.toString()}`, {
+        method: "PATCH",
+        body: JSON.stringify(userwithoutpost),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+  }
 
   return (
     <div className="left_right_separator">
