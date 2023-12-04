@@ -47,7 +47,7 @@ export default function LoginPage() {
                     navigate(-1);
                 }
                 else{
-                    navigate(`/newprofile`)
+                    navigate(`/createprofile`)
                 }
             }}
             onError={() => {
