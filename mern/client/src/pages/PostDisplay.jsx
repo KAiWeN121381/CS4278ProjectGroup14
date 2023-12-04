@@ -1,6 +1,7 @@
 import Lhouse from "../assets/defaulthouse.png";
 import MapComponent from "../components/MapComponent";
 import info from "../assets/info.png";
+import Request from "../components/Request";
 
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router";
@@ -29,6 +30,14 @@ export default function PostDisplay() {
 
     description: "",
 
+    records: [],
+  });
+
+  const [user, setUser] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    post: "",
     records: [],
   });
 
@@ -62,6 +71,34 @@ export default function PostDisplay() {
 
     return;
   }, [params.id, navigate]);
+
+  useEffect(() => {
+    async function fetchData() {
+      const id = sessionStorage.getItem("userID").toString();
+      const response = await fetch(
+        `http://127.0.0.1:5050/users/${id.toString()}`
+      );
+
+      if (!response.ok) {
+        const message = `An error has occurred fetching user data: ${response.statusText}`;
+        window.alert(message);
+        return;
+      }
+
+      const user = await response.json();
+      if (!user) {
+        window.alert(`User with id ${id} not found`);
+        navigate("/");
+        return;
+      }
+
+      setUser(user);
+    }
+
+    fetchData();
+
+    return;
+  }, [sessionStorage.getItem("userID"), navigate]);
 
   return (
     <div>
@@ -116,7 +153,8 @@ export default function PostDisplay() {
               </div>
             </div>
             <div className="post-details-wrapper">
-              <button className="request-sublet-button">Request Sublet</button>
+              <Request to_name={form.username} from_name={user.name} reply_to={user.email} to_email={"liao.li@vanderbilt.edu"}/>
+              {/* <button className="request-sublet-button">Request Sublet</button> */}
             </div>
           </div>
         </div>

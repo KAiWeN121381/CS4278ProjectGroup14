@@ -29,7 +29,7 @@ export default function EditPost() {
 
   useEffect(() => {
     async function fetchData() {
-      const id = params.id.toString(); // This is undefined
+      const id = params.id.toString();
       const response = await fetch(
         `http://127.0.0.1:5050/posts/${params.id.toString()}`
       );
