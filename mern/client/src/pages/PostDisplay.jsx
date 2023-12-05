@@ -6,7 +6,7 @@ import InlineShareButtons from "../components/ShareButtons";
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router";
 
-import { Mdpets, MdKitchen } from "react-icons/md";
+import { MdPets, MdKitchen } from "react-icons/md";
 import { CgGym } from "react-icons/cg";
 
 export default function PostDisplay() {
@@ -170,7 +170,7 @@ export default function PostDisplay() {
                 <h5>Facilities: </h5>
                 <div className="filter-content-block">
                   {form.pet_friendly && (
-                    <Mdpets
+                    <MdPets
                       className="facility-button-img"
                       title="pet_friendlys allowed"
                     />
