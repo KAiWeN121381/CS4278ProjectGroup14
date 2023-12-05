@@ -10,25 +10,25 @@ export default function CreateProfile() {
     phone: "",
     post: "",
   });
-  const [users, setUsers] = useState([])
+  const [users, setUsers] = useState([]);
 
   useEffect(() => {
-      async function getUsers() {
-          const response = await fetch(`http://localhost:5050/users/`);
-  
-          if (!response.ok) {
-          const message = `An error occurred: ${response.statusText}`;
-          window.alert(message);
-          return;
-          }
-  
-          const users = await response.json();
-          setUsers(users);
+    async function getUsers() {
+      const response = await fetch(`https://anchorlease.space/users/`);
+
+      if (!response.ok) {
+        const message = `An error occurred: ${response.statusText}`;
+        window.alert(message);
+        return;
       }
-  
-      getUsers();
-  
-      return;
+
+      const users = await response.json();
+      setUsers(users);
+    }
+
+    getUsers();
+
+    return;
   }, [users.length]);
 
   const navigate = useNavigate();
@@ -46,7 +46,7 @@ export default function CreateProfile() {
     // When a post request is sent to the create url, we'll add a new record to the database.
     const newUser = { ...info };
 
-    await fetch("http://localhost:5050/users", {
+    await fetch("https://anchorlease.space/users", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -65,22 +65,22 @@ export default function CreateProfile() {
     });
 
     async function getUsers() {
-      const response = await fetch(`http://localhost:5050/users/`);
+      const response = await fetch(`https://anchorlease.space/users/`);
 
       if (!response.ok) {
-      const message = `An error occurred: ${response.statusText}`;
-      window.alert(message);
-      return;
+        const message = `An error occurred: ${response.statusText}`;
+        window.alert(message);
+        return;
       }
 
       const users = await response.json();
       setUsers(users);
-  }
+    }
 
-  getUsers();
+    getUsers();
 
-    let tempUsers = users.filter((user) => user.email === info.email)
-    if(tempUsers.length > 0){
+    let tempUsers = users.filter((user) => user.email === info.email);
+    if (tempUsers.length > 0) {
       sessionStorage.setItem("userID", String(tempUsers[0]._id));
     }
 

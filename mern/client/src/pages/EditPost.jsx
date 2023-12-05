@@ -31,7 +31,7 @@ export default function EditPost() {
     async function fetchData() {
       const id = params.id.toString();
       const response = await fetch(
-        `http://localhost:5050/posts/${params.id.toString()}`
+        `https://anchorlease.space/posts/${params.id.toString()}`
       );
 
       if (!response.ok) {
@@ -84,7 +84,7 @@ export default function EditPost() {
     };
 
     // This will send a post request to update the data in the database.
-    await fetch(`http://localhost:5050/posts/${params.id}`, {
+    await fetch(`https://anchorlease.space/posts/${params.id}`, {
       method: "PATCH",
       body: JSON.stringify(editedPost),
       headers: {

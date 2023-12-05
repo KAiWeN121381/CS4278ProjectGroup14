@@ -16,7 +16,7 @@ export default function EditProfile() {
     async function fetchData() {
       const id = params.id.toString();
       const response = await fetch(
-        `http://localhost:5050/users/${params.id.toString()}`
+        `https://anchorlease.space/users/${params.id.toString()}`
       );
 
       if (!response.ok) {
@@ -61,7 +61,7 @@ export default function EditProfile() {
     };
 
     // This will send a post request to update the data in the database.
-    await fetch(`http://localhost:5050/users/${params.id}`, {
+    await fetch(`https://anchorlease.space/users/${params.id}`, {
       method: "PATCH",
       body: JSON.stringify(editedUser),
       headers: {

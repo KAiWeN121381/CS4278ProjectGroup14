@@ -43,10 +43,11 @@ export default function CreatePost() {
       return { ...prev, ...value };
     });
   }
-  
+
   async function getUser() {
     const response = await fetch(
-      `http://localhost:5050/users/${ID.toString()}`, {
+      `https://anchorlease.space/users/${ID.toString()}`,
+      {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -66,27 +67,27 @@ export default function CreatePost() {
     console.log(response.json);
     console.log(user);
 
-
     setUser(user);
-    console.log('llassb',user);
+    console.log("llassb", user);
   }
 
   async function getRecords() {
-    const response = await fetch(`http://localhost:5050/posts/`);
+    const response = await fetch(`https://anchorlease.space/posts/`);
 
     if (!response.ok) {
       const message = `An error occurred: ${response.statusText}`;
       window.alert(message);
       return;
     }
-    
+
     const temp = await response.json();
     setRecords(temp);
 
     let tempRecords = temp.filter((records) => records.title === form.title);
 
     const userResponse = await fetch(
-      `http://localhost:5050/users/${ID.toString()}`, {
+      `https://anchorlease.space/users/${ID.toString()}`,
+      {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -103,7 +104,6 @@ export default function CreatePost() {
     console.log(response.json);
     console.log(tempUser);
 
-
     setUser(tempUser);
 
     console.log(user);
@@ -115,10 +115,9 @@ export default function CreatePost() {
     };
     console.log("with post", userwithpost);
 
-    
     if (tempRecords.length !== -1) {
       // This will send a post request to update the data in the database.
-      await fetch(`http://localhost:5050/users/${ID}`, {
+      await fetch(`https://anchorlease.space/users/${ID}`, {
         method: "PATCH",
         body: JSON.stringify(userwithpost),
         headers: {
@@ -135,7 +134,7 @@ export default function CreatePost() {
     // When a post request is sent to the create url, we'll add a new record to the database.
     const newPost = { ...form };
 
-    await fetch("http://localhost:5050/posts", {
+    await fetch("https://anchorlease.space/posts", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -168,7 +167,7 @@ export default function CreatePost() {
   // This following section will display the form that takes the input from the user.
   // Make everything required
   return (
-    <div style={{marginLeft:"2vw"}}>
+    <div style={{ marginLeft: "2vw" }}>
       <h3>Create New Post</h3>
       <form onSubmit={onSubmit}>
         <div className="form-group">

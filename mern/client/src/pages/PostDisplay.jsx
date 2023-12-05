@@ -50,7 +50,7 @@ export default function PostDisplay() {
     async function fetchData() {
       const id = params.id.toString();
       const response = await fetch(
-        `http://localhost:5050/posts/${params.id.toString()}`
+        `https://anchorlease.space/posts/${params.id.toString()}`
       );
 
       if (!response.ok) {
@@ -76,38 +76,38 @@ export default function PostDisplay() {
 
   useEffect(() => {
     async function getUsers() {
-        const response = await fetch(`http://localhost:5050/users/`);
+      const response = await fetch(`https://anchorlease.space/users/`);
 
-        if (!response.ok) {
+      if (!response.ok) {
         const message = `An error occurred: ${response.statusText}`;
         window.alert(message);
         return;
-        }
+      }
 
-        const users = await response.json();
-        setPosters(users);
+      const users = await response.json();
+      setPosters(users);
     }
 
     getUsers();
 
-    
     let tempPoster = posters.filter((poster) => poster.post === params.id);
-    if (tempPoster.length > 0) {  
-      let to_email = tempPoster[0].email.toString(); 
+    if (tempPoster.length > 0) {
+      let to_email = tempPoster[0].email.toString();
       console.log(tempPoster);
       setToEmail(to_email);
       console.log(toEmail);
     }
-    
+
     return;
   }, [posters.length]);
-  
 
   useEffect(() => {
     async function fetchData() {
-      const id = sessionStorage.getItem("userID") ? sessionStorage.getItem("userID").toString() : "";
+      const id = sessionStorage.getItem("userID")
+        ? sessionStorage.getItem("userID").toString()
+        : "";
       const response = await fetch(
-        `http://localhost:5050/users/${id.toString()}`
+        `https://anchorlease.space/users/${id.toString()}`
       );
 
       if (!response.ok) {
@@ -137,7 +137,10 @@ export default function PostDisplay() {
         <div className="post-left">
           <div className="post-image">
             <h1>{form.title}</h1>
-            <img src={form.file === null ? Lhouse : form.file} alt="House Photo"></img>
+            <img
+              src={form.file === null ? Lhouse : form.file}
+              alt="House Photo"
+            ></img>
           </div>
         </div>
         <div className="post-right">
@@ -164,18 +167,35 @@ export default function PostDisplay() {
               <div>
                 <h5>Facilities: </h5>
                 <div className="filter-content-block">
-                    {form.pet && <MdPets className="facility-button-img" title="Pets allowed"/>}
-                    {form.gym && <CgGym className="facility-button-img" title="Gym"/>}
-                    {form.kitchen && <MdKitchen className="facility-button-img" title="Kitchen"/>}
-                  </div>
+                  {form.pet && (
+                    <MdPets
+                      className="facility-button-img"
+                      title="Pets allowed"
+                    />
+                  )}
+                  {form.gym && (
+                    <CgGym className="facility-button-img" title="Gym" />
+                  )}
+                  {form.kitchen && (
+                    <MdKitchen
+                      className="facility-button-img"
+                      title="Kitchen"
+                    />
+                  )}
+                </div>
               </div>
               <div style={{ height: "10vh" }}>
                 <h5>Location: </h5>
-                <MapComponent address={form.address}/>
+                <MapComponent address={form.address} />
               </div>
             </div>
             <div className="post-details-wrapper">
-              <Request to_name={form.username} from_name={user.name} reply_to={user.email} to_email={toEmail}/>
+              <Request
+                to_name={form.username}
+                from_name={user.name}
+                reply_to={user.email}
+                to_email={toEmail}
+              />
               {/* <button className="request-sublet-button">Request Sublet</button> */}
             </div>
           </div>

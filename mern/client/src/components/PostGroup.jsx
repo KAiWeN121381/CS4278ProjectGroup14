@@ -30,7 +30,7 @@ export default function PostGroup() {
   // This method fetches the records from the database.
   useEffect(() => {
     async function getRecords() {
-      const response = await fetch(`http://localhost:5050/posts/`);
+      const response = await fetch(`https://anchorlease.space/posts/`);
 
       if (!response.ok) {
         const message = `An error occurred: ${response.statusText}`;
@@ -132,7 +132,11 @@ export default function PostGroup() {
           className="filter-button"
           onClick={isOpen ? closeFilter : openFilter}
         >
-          <img src={filter} alt="filter" style={{ height: "1.5rem", width: "1.5rem" }}></img>
+          <img
+            src={filter}
+            alt="filter"
+            style={{ height: "1.5rem", width: "1.5rem" }}
+          ></img>
         </button>
         <Filter isOpen={isOpen} onClose={closeFilter} key="Unique filter" />
         {filtered && (
@@ -183,23 +187,17 @@ export default function PostGroup() {
     }
 
     if (filters.gym) {
-      tempRecords = tempRecords.filter((record) =>
-        record.gym
-      );
+      tempRecords = tempRecords.filter((record) => record.gym);
       changeMade = true;
     }
 
     if (filters.pet) {
-      tempRecords = tempRecords.filter((record) =>
-        record.pet
-      );
+      tempRecords = tempRecords.filter((record) => record.pet);
       changeMade = true;
     }
 
     if (filters.kitchen) {
-      tempRecords = tempRecords.filter((record) =>
-        record.kitchen
-      );
+      tempRecords = tempRecords.filter((record) => record.kitchen);
       changeMade = true;
     }
 
@@ -238,7 +236,7 @@ export default function PostGroup() {
             <div>
               <div className="filter-content-inline">
                 <p>Minimum Price: </p>
-                <img src={pricetag} alt="Pricetag"/>
+                <img src={pricetag} alt="Pricetag" />
                 <input
                   data-testid="Minimum_price"
                   autoFocus={lastInput === "minPrice" ? true : false}
@@ -280,24 +278,36 @@ export default function PostGroup() {
           </div>
           {/* Facility selection */}
           <div className="filter-content-block">
-          <p style={{fontSize:"large"}}>Facilities:</p>
-            <button 
-              className={filters.pet ? "facility-button active" : "facility-button"}
-              onClick={() => 
-              {setFilters({ ...filters, pet : !filters.pet })}}>
-                <MdPets className="facility-button-img" title="Pets"/>
+            <p style={{ fontSize: "large" }}>Facilities:</p>
+            <button
+              className={
+                filters.pet ? "facility-button active" : "facility-button"
+              }
+              onClick={() => {
+                setFilters({ ...filters, pet: !filters.pet });
+              }}
+            >
+              <MdPets className="facility-button-img" title="Pets" />
             </button>
-            <button 
-              className={filters.gym ? "facility-button active" : "facility-button"}
-              onClick={() => 
-              {setFilters({ ...filters, gym : !filters.gym })}}>
-                <CgGym className="facility-button-img" title="Gym"/>
+            <button
+              className={
+                filters.gym ? "facility-button active" : "facility-button"
+              }
+              onClick={() => {
+                setFilters({ ...filters, gym: !filters.gym });
+              }}
+            >
+              <CgGym className="facility-button-img" title="Gym" />
             </button>
-            <button 
-              className={filters.kitchen ? "facility-button active" : "facility-button"}
-              onClick={() => 
-              {setFilters({ ...filters,  kitchen : !filters.kitchen })}}>
-                <MdKitchen className="facility-button-img" title="Kitchen"/>
+            <button
+              className={
+                filters.kitchen ? "facility-button active" : "facility-button"
+              }
+              onClick={() => {
+                setFilters({ ...filters, kitchen: !filters.kitchen });
+              }}
+            >
+              <MdKitchen className="facility-button-img" title="Kitchen" />
             </button>
           </div>
           {/* Stay duration input */}
