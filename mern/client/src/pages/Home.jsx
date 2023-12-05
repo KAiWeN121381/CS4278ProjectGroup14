@@ -1,5 +1,6 @@
 import MapComponent from "../components/MapComponent";
 import PostGroup from "../components/PostGroup";
+import InlineShareButtons from "../components/ShareButtons";
 
 // The home page
 export default function Home() {
@@ -11,6 +12,7 @@ export default function Home() {
         <div className="left_right_separator">
             <div className="home-left">
                 <MapComponent address=""/>
+                <InlineShareButtons />
             </div>
             <div className="home-right">
                 <PostGroup key="PostGroup"/>

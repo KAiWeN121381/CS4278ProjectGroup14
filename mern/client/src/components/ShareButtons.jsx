@@ -1,3 +1,3 @@
-// import {InlineShareButtons} from 'sharethis-reactjs';
+import {InlineShareButtons} from 'sharethis-reactjs';
 
-// export default InlineShareButtons;
+export default InlineShareButtons;
