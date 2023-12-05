@@ -48,7 +48,7 @@ export default function LoginPage() {
             console.log(decodedResponse.email);
             navigate(`/`);
           } else {
-            navigate(`/newprofile`);
+            navigate(`/createprofile`);
           }
         }}
         onError={() => {
