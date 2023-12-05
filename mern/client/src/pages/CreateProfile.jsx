@@ -14,7 +14,7 @@ export default function CreateProfile() {
 
   useEffect(() => {
     async function getUsers() {
-      const response = await fetch(`https://anchorlease.space/users/`);
+      const response = await fetch(`https://anchorlease.space:5050/users/`);
 
       if (!response.ok) {
         const message = `An error occurred: ${response.statusText}`;
@@ -46,7 +46,7 @@ export default function CreateProfile() {
     // When a post request is sent to the create url, we'll add a new record to the database.
     const newUser = { ...info };
 
-    await fetch("https://anchorlease.space/users", {
+    await fetch("https://anchorlease.space:5050/users", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -65,7 +65,7 @@ export default function CreateProfile() {
     });
 
     async function getUsers() {
-      const response = await fetch(`https://anchorlease.space/users/`);
+      const response = await fetch(`https://anchorlease.space:5050/users/`);
 
       if (!response.ok) {
         const message = `An error occurred: ${response.statusText}`;

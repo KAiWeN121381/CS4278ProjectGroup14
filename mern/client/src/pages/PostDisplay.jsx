@@ -1,6 +1,7 @@
 import Lhouse from "../assets/defaulthouse.png";
 import MapComponent from "../components/MapComponent";
 import Request from "../components/Request";
+import InlineShareButtons from "../components/ShareButtons";
 
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router";
@@ -50,7 +51,7 @@ export default function PostDisplay() {
     async function fetchData() {
       const id = params.id.toString();
       const response = await fetch(
-        `https://anchorlease.space/posts/${params.id.toString()}`
+        `https://anchorlease.space:5050/posts/${params.id.toString()}`
       );
 
       if (!response.ok) {
@@ -76,7 +77,7 @@ export default function PostDisplay() {
 
   useEffect(() => {
     async function getUsers() {
-      const response = await fetch(`https://anchorlease.space/users/`);
+      const response = await fetch(`https://anchorlease.space:5050/users/`);
 
       if (!response.ok) {
         const message = `An error occurred: ${response.statusText}`;
@@ -107,7 +108,7 @@ export default function PostDisplay() {
         ? sessionStorage.getItem("userID").toString()
         : "";
       const response = await fetch(
-        `https://anchorlease.space/users/${id.toString()}`
+        `https://anchorlease.space:5050/users/${id.toString()}`
       );
 
       if (!response.ok) {
@@ -141,6 +142,7 @@ export default function PostDisplay() {
               src={form.file === null ? Lhouse : form.file}
               alt="House Photo"
             ></img>
+            <InlineShareButtons />
           </div>
         </div>
         <div className="post-right">

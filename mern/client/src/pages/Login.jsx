@@ -10,7 +10,7 @@ export default function LoginPage() {
 
   useEffect(() => {
     async function getUsers() {
-      const response = await fetch(`https://anchorlease.space/users/`);
+      const response = await fetch(`https://anchorlease.space:5050/users/`);
 
       if (!response.ok) {
         const message = `An error occurred: ${response.statusText}`;
