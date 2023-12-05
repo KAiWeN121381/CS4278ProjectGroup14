@@ -31,7 +31,7 @@ export default function EditPost() {
     async function fetchData() {
       const id = params.id.toString();
       const response = await fetch(
-        `http://127.0.0.1:5050/posts/${params.id.toString()}`
+        `http://localhost:5050/posts/${params.id.toString()}`
       );
 
       if (!response.ok) {
@@ -84,7 +84,7 @@ export default function EditPost() {
     };
 
     // This will send a post request to update the data in the database.
-    await fetch(`http://127.0.0.1:5050/posts/${params.id}`, {
+    await fetch(`http://localhost:5050/posts/${params.id}`, {
       method: "PATCH",
       body: JSON.stringify(editedPost),
       headers: {
@@ -105,13 +105,11 @@ export default function EditPost() {
       <h3>Edit Post</h3>
       <form onSubmit={onSubmit}>
         <div className="form-group">
-          <label htmlFor="username">Name</label>
           <input
-            type="text"
+            type="hidden"
             className="form-control"
             id="username"
-            value={form.username}
-            onChange={(e) => updateForm({ username: e.target.value })}
+            defaultValue={form.username}
           />
         </div>
         <div className="form-group">

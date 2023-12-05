@@ -1,19 +1,20 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router";
 
-// Access by changing website address to http://127.0.0.1:3000/newprofile
+// Access by changing website address to http://localhost:3000/newprofile
 
 export default function CreateProfile() {
   const [info, setInfo] = useState({
     name: "",
-    email: "",
+    email: sessionStorage.getItem("userEmail"),
     phone: "",
+    post: "",
   });
   const [users, setUsers] = useState([])
 
   useEffect(() => {
       async function getUsers() {
-          const response = await fetch(`http://127.0.0.1:5050/users/`);
+          const response = await fetch(`http://localhost:5050/users/`);
   
           if (!response.ok) {
           const message = `An error occurred: ${response.statusText}`;
@@ -45,7 +46,7 @@ export default function CreateProfile() {
     // When a post request is sent to the create url, we'll add a new record to the database.
     const newUser = { ...info };
 
-    await fetch("http://127.0.0.1:5050/users", {
+    await fetch("http://localhost:5050/users", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -58,12 +59,13 @@ export default function CreateProfile() {
 
     setInfo({
       name: "",
-      email: "",
+      email: sessionStorage.getItem("userEmail"),
       phone: "",
+      post: "",
     });
 
     async function getUsers() {
-      const response = await fetch(`http://127.0.0.1:5050/users/`);
+      const response = await fetch(`http://localhost:5050/users/`);
 
       if (!response.ok) {
       const message = `An error occurred: ${response.statusText}`;
@@ -78,7 +80,7 @@ export default function CreateProfile() {
   getUsers();
 
     let tempUsers = users.filter((user) => user.email === info.email)
-    if(tempUsers.length !== -1){
+    if(tempUsers.length > 0){
       sessionStorage.setItem("userID", String(tempUsers[0]._id));
     }
 
@@ -97,17 +99,6 @@ export default function CreateProfile() {
             id="name"
             value={info.name}
             onChange={(e) => updateInfo({ name: e.target.value })}
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="email">Email</label>
-          <input
-            type="email"
-            placeholder=""
-            className="form-control"
-            id="email"
-            value={info.email}
-            onChange={(e) => updateInfo({ email: e.target.value })}
           />
         </div>
         <div className="form-group">

@@ -50,7 +50,7 @@ export default function PostDisplay() {
     async function fetchData() {
       const id = params.id.toString();
       const response = await fetch(
-        `http://127.0.0.1:5050/posts/${params.id.toString()}`
+        `http://localhost:5050/posts/${params.id.toString()}`
       );
 
       if (!response.ok) {
@@ -76,7 +76,7 @@ export default function PostDisplay() {
 
   useEffect(() => {
     async function getUsers() {
-        const response = await fetch(`http://127.0.0.1:5050/users/`);
+        const response = await fetch(`http://localhost:5050/users/`);
 
         if (!response.ok) {
         const message = `An error occurred: ${response.statusText}`;
@@ -107,7 +107,7 @@ export default function PostDisplay() {
     async function fetchData() {
       const id = sessionStorage.getItem("userID") ? sessionStorage.getItem("userID").toString() : "";
       const response = await fetch(
-        `http://127.0.0.1:5050/users/${id.toString()}`
+        `http://localhost:5050/users/${id.toString()}`
       );
 
       if (!response.ok) {

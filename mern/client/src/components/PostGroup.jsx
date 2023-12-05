@@ -30,7 +30,7 @@ export default function PostGroup() {
   // This method fetches the records from the database.
   useEffect(() => {
     async function getRecords() {
-      const response = await fetch(`http://127.0.0.1:5050/posts/`);
+      const response = await fetch(`http://localhost:5050/posts/`);
 
       if (!response.ok) {
         const message = `An error occurred: ${response.statusText}`;

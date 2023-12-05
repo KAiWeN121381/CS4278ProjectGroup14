@@ -16,7 +16,7 @@ export default function EditProfile() {
     async function fetchData() {
       const id = params.id.toString();
       const response = await fetch(
-        `http://127.0.0.1:5050/users/${params.id.toString()}`
+        `http://localhost:5050/users/${params.id.toString()}`
       );
 
       if (!response.ok) {
@@ -61,7 +61,7 @@ export default function EditProfile() {
     };
 
     // This will send a post request to update the data in the database.
-    await fetch(`http://127.0.0.1:5050/users/${params.id}`, {
+    await fetch(`http://localhost:5050/users/${params.id}`, {
       method: "PATCH",
       body: JSON.stringify(editedUser),
       headers: {
@@ -88,13 +88,11 @@ export default function EditProfile() {
           />
         </div>
         <div className="form-group">
-          <label htmlFor="email">Email</label>
           <input
-            type="text"
+            type="hidden"
             className="form-control"
             id="email"
             value={form.email}
-            onChange={(e) => updateForm({ email: e.target.value })}
           />
         </div>
         <div className="form-group">

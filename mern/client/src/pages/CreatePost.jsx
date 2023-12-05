@@ -19,16 +19,18 @@ export default function CreatePost() {
     address: "",
 
     // facilities
-    pet: false,
+    pet_friendly: false,
     gym: false,
     kitchen: false,
 
     description: "",
   });
+
   const [user, setUser] = useState({
     name: "",
     email: "",
     phone: "",
+    post: "",
   });
   const [records, setRecords] = useState([]);
   if (ID === "") {
@@ -41,74 +43,89 @@ export default function CreatePost() {
       return { ...prev, ...value };
     });
   }
-  /*
-  async function setPoster(){
-    
-    useEffect(() => {
-      async function getRecords() {
-        const response = await fetch(`http://127.0.0.1:5050/posts/`);
   
-        if (!response.ok) {
-          const message = `An error occurred: ${response.statusText}`;
-          window.alert(message);
-          return;
-        }
-  
-        const records = await response.json();
-        setRecords(records);
-      }
-  
-      getRecords();
-  
-      return;
-    }, [records.length]);
-
-    let tempRecords = records.filter((record) => record.title === form.title);
-    if(tempRecords.length !== -1){
-      const response = await fetch(
-        `http://127.0.0.1:5050/users/${global.USERID}`
-      );
-      const userWithPost = {
-        name: response.name,
-        email: response.email,
-        phone: response.phone,
-        post: tempRecords[0].id,
-      };
-
-      // This will send a post request to update the data in the database.
-    await fetch(`http://127.0.0.1:5050/users/${global.USERID}`, {
-      method: "PATCH",
-      body: JSON.stringify(userWithPost),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-    }
-  }*/
   async function getUser() {
     const response = await fetch(
-      `http://127.0.0.1:5050/users/${ID}`
+      `http://localhost:5050/users/${ID.toString()}`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
     );
 
-    const user = {
-      name: response.name,
-      email: response.email,
-      phone: response.phone,
-    };
+    const user = await response.json();
+    if (!user) {
+      window.alert(`User with id ${ID} not found`);
+      navigate("/");
+      return;
+    }
+    // console.log("1st");
+    // console.log(ID);
+    // console.log(response);
+    console.log(response.json);
+    console.log(user);
+
+
     setUser(user);
+    console.log('llassb',user);
   }
 
   async function getRecords() {
-    const response = await fetch(`http://127.0.0.1:5050/posts/`);
+    const response = await fetch(`http://localhost:5050/posts/`);
 
     if (!response.ok) {
       const message = `An error occurred: ${response.statusText}`;
       window.alert(message);
       return;
     }
+    
+    const temp = await response.json();
+    setRecords(temp);
 
-    const records = await response.json();
-    setRecords(records);
+    let tempRecords = temp.filter((records) => records.title === form.title);
+
+    const userResponse = await fetch(
+      `http://localhost:5050/users/${ID.toString()}`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+
+    const tempUser = await userResponse.json();
+    if (!tempUser) {
+      window.alert(`User with id ${ID} not found`);
+      navigate("/");
+      return;
+    }
+    console.log(response.json);
+    console.log(tempUser);
+
+
+    setUser(tempUser);
+
+    console.log(user);
+    let userwithpost = {
+      name: tempUser.name,
+      email: tempUser.email,
+      phone: tempUser.phone,
+      post: String(tempRecords[0]._id),
+    };
+    console.log("with post", userwithpost);
+
+    
+    if (tempRecords.length !== -1) {
+      // This will send a post request to update the data in the database.
+      await fetch(`http://localhost:5050/users/${ID}`, {
+        method: "PATCH",
+        body: JSON.stringify(userwithpost),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+    }
   }
 
   // This function will handle the submission.
@@ -118,7 +135,7 @@ export default function CreatePost() {
     // When a post request is sent to the create url, we'll add a new record to the database.
     const newPost = { ...form };
 
-    await fetch("http://127.0.0.1:5050/posts", {
+    await fetch("http://localhost:5050/posts", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -130,28 +147,6 @@ export default function CreatePost() {
     });
 
     getRecords();
-    getUser();
-
-    let tempRecords = records.filter((record) => record.title === form.title);
-
-    let userwithpost = {
-      name: user.name,
-      email: user.email,
-      phone: user.phone,
-      post: String(tempRecords[0].id),
-    };
-
-    
-    if (tempRecords.length !== -1) {
-      // This will send a post request to update the data in the database.
-      await fetch(`http://127.0.0.1:5050/users/${ID}`, {
-        method: "PATCH",
-        body: JSON.stringify(userwithpost),
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
-    }
 
     setForm({
       username: "",
@@ -162,7 +157,7 @@ export default function CreatePost() {
       end: "",
       distance: "",
       address: "",
-      pet: false,
+      pet_friendly: false,
       gym: false,
       kitchen: false,
       description: "",
@@ -177,15 +172,12 @@ export default function CreatePost() {
       <h3>Create New Post</h3>
       <form onSubmit={onSubmit}>
         <div className="form-group">
-          <label htmlFor="username">Name </label>
           <input
             data-testid="Name-input"
-            type="text"
+            type="hidden"
             className="form-control"
             id="username"
             defaultValue={user.name}
-            value={form.username}
-            onChange={(e) => updateForm({ username: e.target.value })}
           />
         </div>
         <div className="form-group">
@@ -262,17 +254,17 @@ export default function CreatePost() {
           />
         </div>
         <div className="form-group">
-          <label htmlFor="pet">pet</label>
+          <label htmlFor="pet_friendly">Pet</label>
           <input
             type="checkbox"
             className="form-control"
-            id="pet"
-            checked={form.pet}
-            onChange={(e) => updateForm({ pet: e.target.checked })}
+            id="pet_friendly"
+            checked={form.pet_friendly}
+            onChange={(e) => updateForm({ pet_friendly: e.target.checked })}
           />
         </div>
         <div className="form-group">
-          <label htmlFor="gym">gym</label>
+          <label htmlFor="gym">Gym</label>
           <input
             data-testid="gym-input"
             type="checkbox"
@@ -283,7 +275,7 @@ export default function CreatePost() {
           />
         </div>
         <div className="form-group">
-          <label htmlFor="kitchen">kitchen</label>
+          <label htmlFor="kitchen">Kitchen</label>
           <input
             type="checkbox"
             className="form-control"

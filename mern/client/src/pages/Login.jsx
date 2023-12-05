@@ -10,7 +10,7 @@ export default function LoginPage() {
 
     useEffect(() => {
             async function getUsers() {
-                const response = await fetch(`http://127.0.0.1:5050/users/`);
+                const response = await fetch(`http://localhost:5050/users/`);
         
                 if (!response.ok) {
                 const message = `An error occurred: ${response.statusText}`;
@@ -29,6 +29,7 @@ export default function LoginPage() {
 
     let userID = sessionStorage.getItem("userID");
 
+    
     if(userID) {
         navigate(`/profile/${userID}`);
     }
@@ -47,6 +48,7 @@ export default function LoginPage() {
                     navigate(-1);
                 }
                 else{
+                    sessionStorage.setItem("userEmail", decodedResponse.email);
                     navigate(`/createprofile`)
                 }
             }}
