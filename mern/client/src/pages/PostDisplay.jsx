@@ -137,7 +137,7 @@ export default function PostDisplay() {
         <div className="post-left">
           <div className="post-image">
             <h1>{form.title}</h1>
-            <img src={form.file === null ? Lhouse : form.file}></img>
+            <img src={form.file === null ? Lhouse : form.file} alt="House Photo"></img>
           </div>
         </div>
         <div className="post-right">

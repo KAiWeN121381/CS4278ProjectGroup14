@@ -60,8 +60,8 @@ export default function PostGroup() {
         {posts.length === 0 && <h1>No posts are found</h1>}
 
         {/* Dynamically display a post card for each of the posts in the database */}
-        {posts.map((post) => (
-          <div className="grid-item">
+        {posts.map((post, index) => (
+          <div className="grid-item" key={index}>
             <PostPreview post={post} />
           </div>
         ))}
@@ -132,7 +132,7 @@ export default function PostGroup() {
           className="filter-button"
           onClick={isOpen ? closeFilter : openFilter}
         >
-          <img src={filter} style={{ height: "1.5rem", width: "1.5rem" }}></img>
+          <img src={filter} alt="filter" style={{ height: "1.5rem", width: "1.5rem" }}></img>
         </button>
         <Filter isOpen={isOpen} onClose={closeFilter} key="Unique filter" />
         {filtered && (
@@ -238,7 +238,7 @@ export default function PostGroup() {
             <div>
               <div className="filter-content-inline">
                 <p>Minimum Price: </p>
-                <img src={pricetag} />
+                <img src={pricetag} alt="Pricetag"/>
                 <input
                   data-testid="Minimum_price"
                   autoFocus={lastInput === "minPrice" ? true : false}
@@ -258,7 +258,7 @@ export default function PostGroup() {
               </div>
               <div className="filter-content-inline">
                 <p>Maximum Price: </p>
-                <img src={pricetag} />
+                <img src={pricetag} alt="Pricetag" />
                 <input
                   data-testid="Maximum_price"
                   autoFocus={lastInput === "maxPrice" ? true : false}
@@ -305,7 +305,7 @@ export default function PostGroup() {
             <div>
               <div className="filter-content-inline">
                 <p>Check-in: </p>
-                <img src={calendar} style={{ height: "4vh" }} />
+                <img src={calendar} alt="Calendar" style={{ height: "4vh" }} />
                 <input
                   data-testid="Minimum_date"
                   autoFocus={lastInput === "start" ? true : false}
@@ -324,7 +324,7 @@ export default function PostGroup() {
               </div>
               <div className="filter-content-inline">
                 <p>Check-out: </p>
-                <img src={calendar} style={{ height: "4vh" }} />
+                <img src={calendar} alt="Calendar" style={{ height: "4vh" }} />
                 <input
                   data-testid="Maximum_date"
                   autoFocus={lastInput === "end" ? true : false}

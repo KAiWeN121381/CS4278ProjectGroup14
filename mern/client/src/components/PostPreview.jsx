@@ -9,7 +9,7 @@ export default function PostPreview(props) {
     return (
         <CustomLink to={linkname}>
             <div className="post-preview">
-                <img src={props.post.file ? props.post.file : DefaultHouse} style={{height:"100%", width:"100%"}}>
+                <img src={props.post.file ? props.post.file : DefaultHouse} alt='HousePhoto' style={{height:"100%", width:"100%"}}>
                 </img>
                 <h1 className='text-overlay'>
                     {props.post.title}
