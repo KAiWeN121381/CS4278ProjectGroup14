@@ -22,7 +22,7 @@ export default function PostGroup() {
     maxPrice: "",
     start: "",
     end: "",
-    pet: false,
+    pet_friendly: false,
     gym: false,
     kitchen: false,
   });
@@ -191,8 +191,8 @@ export default function PostGroup() {
       changeMade = true;
     }
 
-    if (filters.pet) {
-      tempRecords = tempRecords.filter((record) => record.pet);
+    if (filters.pet_friendly) {
+      tempRecords = tempRecords.filter((record) => record.pet_friendly);
       changeMade = true;
     }
 
@@ -281,10 +281,12 @@ export default function PostGroup() {
             <p style={{ fontSize: "large" }}>Facilities:</p>
             <button
               className={
-                filters.pet ? "facility-button active" : "facility-button"
+                filters.pet_friendly
+                  ? "facility-button active"
+                  : "facility-button"
               }
               onClick={() => {
-                setFilters({ ...filters, pet: !filters.pet });
+                setFilters({ ...filters, pet_friendly: !filters.pet_friendly });
               }}
             >
               <MdPets className="facility-button-img" title="Pets" />
