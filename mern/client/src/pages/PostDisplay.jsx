@@ -6,7 +6,7 @@ import InlineShareButtons from "../components/ShareButtons";
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router";
 
-import { MdPets, MdKitchen } from "react-icons/md";
+import { Mdpet_friendlys, MdKitchen } from "react-icons/md";
 import { CgGym } from "react-icons/cg";
 
 export default function PostDisplay() {
@@ -24,7 +24,7 @@ export default function PostDisplay() {
     address: "",
 
     // facilities
-    pet: false,
+    pet_friendly: false,
     gym: false,
     kitchen: false,
 
@@ -169,10 +169,10 @@ export default function PostDisplay() {
               <div>
                 <h5>Facilities: </h5>
                 <div className="filter-content-block">
-                  {form.pet && (
-                    <MdPets
+                  {form.pet_friendly && (
+                    <Mdpet_friendlys
                       className="facility-button-img"
-                      title="Pets allowed"
+                      title="pet_friendlys allowed"
                     />
                   )}
                   {form.gym && (

@@ -16,7 +16,7 @@ export default function EditPost() {
     address: "",
 
     // facilities
-    pet: false,
+    pet_friendly: false,
     gym: false,
     kitchen: false,
 
@@ -76,7 +76,7 @@ export default function EditPost() {
       distance: form.distance,
       address: form.address,
 
-      pet: form.pet,
+      pet_friendly: form.pet_friendly,
       gym: form.gym,
       kitchen: form.kitchen,
 
@@ -183,13 +183,13 @@ export default function EditPost() {
           />
         </div>
         <div className="form-group">
-          <label htmlFor="pet">pet</label>
+          <label htmlFor="pet_friendly">pet_friendly</label>
           <input
             type="checkbox"
             className="form-control"
-            id="pet"
-            checked={form.pet}
-            onChange={(e) => updateForm({ pet: e.target.checked })}
+            id="pet_friendly"
+            checked={form.pet_friendly}
+            onChange={(e) => updateForm({ pet_friendly: e.target.checked })}
           />
         </div>
         <div className="form-group">
