@@ -1,6 +1,7 @@
 import Lhouse from "../assets/defaulthouse.png";
 import MapComponent from "../components/MapComponent";
 import Request from "../components/Request";
+import InlineShareButtons from "../components/ShareButtons";
 
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router";
@@ -138,6 +139,7 @@ export default function PostDisplay() {
           <div className="post-image">
             <h1>{form.title}</h1>
             <img src={form.file === null ? Lhouse : form.file} alt="House Photo"></img>
+            <InlineShareButtons />
           </div>
         </div>
         <div className="post-right">
