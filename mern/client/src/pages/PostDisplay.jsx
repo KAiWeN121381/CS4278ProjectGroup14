@@ -1,7 +1,7 @@
 import Lhouse from "../assets/defaulthouse.png";
 import MapComponent from "../components/MapComponent";
 import Request from "../components/Request";
-import InlineShareButtons from "../components/ShareButtons";
+import InlineShareButtons from "../components/ShareButtons"
 
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router";
@@ -24,7 +24,7 @@ export default function PostDisplay() {
     address: "",
 
     // facilities
-    pet: false,
+    pet_friendly: false,
     gym: false,
     kitchen: false,
 
@@ -166,7 +166,7 @@ export default function PostDisplay() {
               <div>
                 <h5>Facilities: </h5>
                 <div className="filter-content-block">
-                    {form.pet && <MdPets className="facility-button-img" title="Pets allowed"/>}
+                    {form.pet_friendly && <MdPets className="facility-button-img" title="Pets allowed"/>}
                     {form.gym && <CgGym className="facility-button-img" title="Gym"/>}
                     {form.kitchen && <MdKitchen className="facility-button-img" title="Kitchen"/>}
                   </div>
