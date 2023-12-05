@@ -43,6 +43,7 @@ export default function LoginPage() {
                 let tempUsers = users.filter((user) => user.email === decodedResponse.email)
                 if (tempUsers.length !== 0){
                     sessionStorage.setItem("userID", String(tempUsers[0]._id));
+                    sessionStorage.setItem("userEmail", decodedResponse.email);
                     userID = sessionStorage.getItem("userID");
                     console.log(decodedResponse.email);
                     navigate(-1);
