@@ -172,7 +172,7 @@ export default function PostDisplay() {
                   {form.pet_friendly && (
                     <MdPets
                       className="facility-button-img"
-                      title="pet_friendlys allowed"
+                      title="Pets allowed"
                     />
                   )}
                   {form.gym && (
